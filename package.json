@@ -10,7 +10,11 @@
     "dev": "npm run dev --workspace=@abhiyantrix/api & npm run dev --workspace=@abhiyantrix/web",
     "dev:api": "npm run dev --workspace=@abhiyantrix/api",
     "dev:web": "npm run dev --workspace=@abhiyantrix/web",
-    "build": "npm run build --workspaces"
+    "build": "npm run build --workspaces",
+    "typecheck": "npm run build --workspaces",
+    "test": "npm run test --workspaces --if-present",
+    "test:api": "npm run test --workspace=@abhiyantrix/api",
+    "test:e2e": "cd apps/api && node test-verification.mjs"
   },
   "devDependencies": {
     "typescript": "^5.4.5"

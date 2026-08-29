@@ -1,14 +1,16 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 import { store } from '../db/store.js';
-import { ScoreSubmission, Submission, Rubric } from '@abhiyantrix/shared-types';
+import { Submission, Rubric } from '@abhiyantrix/shared-types';
 import { broadcastScoreSubmitted, broadcastLeaderboardUpdate } from '../sockets/index.js';
 import { calculateLeaderboard } from '../services/leaderboard.js';
+import { validateBody, SubmitScoreSchema, SubmitProjectSchema } from '../middleware/validate.js';
+import { strictOperationLimiter } from '../middleware/security.js';
 
 export const judgingRouter = Router({ mergeParams: true });
 
 // Get Rubrics & Criteria for event
-judgingRouter.get('/judging/rubrics', (req, res) => {
-  const eventId = req.params.id as string;
+judgingRouter.get('/judging/rubrics', (req: Request, res: Response) => {
+  const eventId = (req.params as { id: string }).id;
   const rubric = Array.from(store.rubrics.values()).find(r => r.eventId === eventId);
   if (!rubric) {
     return res.status(404).json({ error: 'Rubric not configured for this event' });
@@ -17,8 +19,8 @@ judgingRouter.get('/judging/rubrics', (req, res) => {
 });
 
 // Update / Configure Rubric Criteria
-judgingRouter.put('/judging/rubrics', (req, res) => {
-  const eventId = req.params.id as string;
+judgingRouter.put('/judging/rubrics', (req: Request, res: Response) => {
+  const eventId = (req.params as { id: string }).id;
   const { name, description, criteria } = req.body;
 
   let rubric = Array.from(store.rubrics.values()).find(r => r.eventId === eventId);
@@ -45,8 +47,8 @@ judgingRouter.put('/judging/rubrics', (req, res) => {
 });
 
 // Get Submissions for event
-judgingRouter.get('/submissions', (req, res) => {
-  const eventId = req.params.id as string;
+judgingRouter.get('/submissions', (req: Request, res: Response) => {
+  const eventId = (req.params as { id: string }).id;
   const submissions = Array.from(store.submissions.values())
     .filter(s => s.eventId === eventId)
     .map(s => ({
@@ -58,13 +60,9 @@ judgingRouter.get('/submissions', (req, res) => {
 });
 
 // Create/Submit Project Artifacts (Participant side)
-judgingRouter.post('/submissions', (req, res) => {
-  const eventId = req.params.id as string;
+judgingRouter.post('/submissions', validateBody(SubmitProjectSchema), (req: Request, res: Response) => {
+  const eventId = (req.params as { id: string }).id;
   const { teamId, title, description, track, repoUrl, demoUrl, pitchDeckUrl } = req.body;
-
-  if (!teamId || !title || !repoUrl) {
-    return res.status(400).json({ error: 'Team ID, Title, and Repo URL are required' });
-  }
 
   const team = store.teams.get(teamId);
   if (!team) {
@@ -105,8 +103,8 @@ judgingRouter.post('/submissions', (req, res) => {
 });
 
 // Get Assigned Submissions for Judge (with their previous scores if any)
-judgingRouter.get('/judging/assignments', (req, res) => {
-  const eventId = req.params.id as string;
+judgingRouter.get('/judging/assignments', (req: Request, res: Response) => {
+  const eventId = (req.params as { id: string }).id;
   const judgeId = req.query.judgeId as string;
 
   const submissions = Array.from(store.submissions.values()).filter(s => s.eventId === eventId);
@@ -135,14 +133,10 @@ judgingRouter.get('/judging/assignments', (req, res) => {
   });
 });
 
-// Submit or Update Score by Judge
-judgingRouter.post('/judging/scores', (req, res) => {
-  const eventId = req.params.id as string;
+// Submit or Update Score by Judge with Zod validation & rate limiter
+judgingRouter.post('/judging/scores', strictOperationLimiter, validateBody(SubmitScoreSchema), (req: Request, res: Response) => {
+  const eventId = (req.params as { id: string }).id;
   const { submissionId, judgeId, criteriaScores, feedbackStrengths, feedbackImprovements } = req.body;
-
-  if (!submissionId || !judgeId || !Array.isArray(criteriaScores)) {
-    return res.status(400).json({ error: 'Submission ID, Judge ID, and criteria scores are required' });
-  }
 
   const submission = store.submissions.get(submissionId);
   if (!submission) {
@@ -216,8 +210,8 @@ judgingRouter.post('/judging/scores', (req, res) => {
 });
 
 // Audit Trail of all scores (for Organizer)
-judgingRouter.get('/judging/audit-trail', (req, res) => {
-  const eventId = req.params.id as string;
+judgingRouter.get('/judging/audit-trail', (req: Request, res: Response) => {
+  const eventId = (req.params as { id: string }).id;
   const scores = Array.from(store.scores.values())
     .filter(sc => sc.eventId === eventId)
     .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime())

@@ -1,22 +1,21 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 import { store } from '../db/store.js';
-import { Registration, CheckInRecord, User } from '@abhiyantrix/shared-types';
+import { CheckInRecord, User } from '@abhiyantrix/shared-types';
 import { broadcastCheckInUpdate } from '../sockets/index.js';
+import { validateBody, RegisterSchema, CheckInVerifySchema } from '../middleware/validate.js';
+import { strictOperationLimiter } from '../middleware/security.js';
 
 export const checkinsRouter = Router({ mergeParams: true });
 
-// Public / Attendee Registration
-checkinsRouter.post('/register', (req, res) => {
-  const eventId = req.params.id as string;
+// Public / Attendee Registration with Zod validation
+checkinsRouter.post('/register', strictOperationLimiter, validateBody(RegisterSchema), (req: Request, res: Response) => {
+  const eventId = (req.params as { id: string }).id;
   const event = store.events.get(eventId);
   if (!event) {
     return res.status(404).json({ error: 'Event not found' });
   }
 
   const { fullName, email, collegeOrCompany, skills, preferredRole, tShirtSize, dietaryRequirements } = req.body;
-  if (!fullName || !email) {
-    return res.status(400).json({ error: 'Full name and email are required' });
-  }
 
   // Check if user already exists or create new user
   let user = Array.from(store.users.values()).find(u => u.email.toLowerCase() === email.toLowerCase());
@@ -75,8 +74,8 @@ checkinsRouter.post('/register', (req, res) => {
 });
 
 // Get current attendee registration
-checkinsRouter.get('/my-registration', (req, res) => {
-  const eventId = req.params.id as string;
+checkinsRouter.get('/my-registration', (req: Request, res: Response) => {
+  const eventId = (req.params as { id: string }).id;
   const userId = req.query.userId as string;
 
   if (!userId) {
@@ -96,8 +95,8 @@ checkinsRouter.get('/my-registration', (req, res) => {
 });
 
 // List all registrations for organizer
-checkinsRouter.get('/registrations', (req, res) => {
-  const eventId = req.params.id as string;
+checkinsRouter.get('/registrations', (req: Request, res: Response) => {
+  const eventId = (req.params as { id: string }).id;
   const registrations = Array.from(store.registrations.values())
     .filter(r => r.eventId === eventId)
     .map(r => ({
@@ -109,8 +108,8 @@ checkinsRouter.get('/registrations', (req, res) => {
 });
 
 // Verify & Process Check-in (via QR Token or Virtual self-checkin)
-checkinsRouter.post('/check-in/verify', (req, res) => {
-  const eventId = req.params.id as string;
+checkinsRouter.post('/check-in/verify', strictOperationLimiter, validateBody(CheckInVerifySchema), (req: Request, res: Response) => {
+  const eventId = (req.params as { id: string }).id;
   const { qrToken, method, scannedByUserId } = req.body;
 
   if (!qrToken) {
@@ -185,8 +184,8 @@ checkinsRouter.post('/check-in/verify', (req, res) => {
 });
 
 // Get Check-in Stats
-checkinsRouter.get('/check-in/stats', (req, res) => {
-  const eventId = req.params.id as string;
+checkinsRouter.get('/check-in/stats', (req: Request, res: Response) => {
+  const eventId = (req.params as { id: string }).id;
   const totalRegistered = Array.from(store.registrations.values()).filter(r => r.eventId === eventId).length;
   const checkIns = Array.from(store.checkIns.values())
     .filter(c => c.eventId === eventId)

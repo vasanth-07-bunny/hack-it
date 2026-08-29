@@ -1,13 +1,14 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 import { store } from '../db/store.js';
 import { Team, TeamMember } from '@abhiyantrix/shared-types';
 import { broadcastTeamUpdate } from '../sockets/index.js';
+import { validateBody, CreateTeamSchema, JoinTeamSchema, LockTeamSchema } from '../middleware/validate.js';
 
 export const teamsRouter = Router({ mergeParams: true });
 
 // Get Matchmaking Participants (Filtered by skills, role, unassigned status)
-teamsRouter.get('/matchmaking/participants', (req, res) => {
-  const eventId = req.params.id as string;
+teamsRouter.get('/matchmaking/participants', (req: Request, res: Response) => {
+  const eventId = (req.params as { id: string }).id;
   const { skill, role, unassignedOnly } = req.query;
 
   const registrations = Array.from(store.registrations.values()).filter(r => r.eventId === eventId);
@@ -21,7 +22,7 @@ teamsRouter.get('/matchmaking/participants', (req, res) => {
 
   let participantUsers = registrations.map(r => {
     const user = store.users.get(r.userId)!;
-    const team = teams.find(t => t.members.some(m => m.userId === user.id));
+    const team = teams.find(t => t.members.some(m => m.userId === user?.id));
     return {
       ...user,
       registrationStatus: r.status,
@@ -37,14 +38,14 @@ teamsRouter.get('/matchmaking/participants', (req, res) => {
 
   if (role) {
     participantUsers = participantUsers.filter(p =>
-      p.preferredRole.toLowerCase().includes((role as string).toLowerCase())
+      p.preferredRole?.toLowerCase().includes((role as string).toLowerCase())
     );
   }
 
   if (skill) {
     const skillTerm = (skill as string).toLowerCase();
     participantUsers = participantUsers.filter(p =>
-      p.skills.some(s => s.toLowerCase().includes(skillTerm))
+      p.skills?.some(s => s.toLowerCase().includes(skillTerm))
     );
   }
 
@@ -52,8 +53,8 @@ teamsRouter.get('/matchmaking/participants', (req, res) => {
 });
 
 // Get Matchmaking Teams (Filtered by track, needed skills, open roles)
-teamsRouter.get('/matchmaking/teams', (req, res) => {
-  const eventId = req.params.id as string;
+teamsRouter.get('/matchmaking/teams', (req: Request, res: Response) => {
+  const eventId = (req.params as { id: string }).id;
   const { track, neededSkill, hasOpenRoles } = req.query;
 
   let teams = Array.from(store.teams.values())
@@ -84,14 +85,10 @@ teamsRouter.get('/matchmaking/teams', (req, res) => {
   return res.json(teams);
 });
 
-// Create a new Team
-teamsRouter.post('/teams', (req, res) => {
-  const eventId = req.params.id as string;
+// Create a new Team with Zod validation
+teamsRouter.post('/teams', validateBody(CreateTeamSchema), (req: Request, res: Response) => {
+  const eventId = (req.params as { id: string }).id;
   const { name, pitch, track, leaderId, openRoles, neededSkills } = req.body;
-
-  if (!name || !pitch || !track || !leaderId) {
-    return res.status(400).json({ error: 'Name, pitch, track, and leaderId are required' });
-  }
 
   const leaderUser = store.users.get(leaderId);
   if (!leaderUser) {
@@ -126,9 +123,9 @@ teamsRouter.post('/teams', (req, res) => {
 });
 
 // Join Request / Direct Add to Team
-teamsRouter.post('/teams/:teamId/join', (req, res) => {
-  const eventId = req.params.id as string;
-  const teamId = req.params.teamId as string;
+teamsRouter.post('/teams/:teamId/join', validateBody(JoinTeamSchema), (req: Request, res: Response) => {
+  const eventId = (req.params as { id: string; teamId: string }).id;
+  const teamId = (req.params as { id: string; teamId: string }).teamId;
   const { userId, roleInTeam } = req.body;
 
   const team = store.teams.get(teamId);
@@ -183,9 +180,9 @@ teamsRouter.post('/teams/:teamId/join', (req, res) => {
 });
 
 // Lock Team Roster
-teamsRouter.patch('/teams/:teamId/lock', (req, res) => {
-  const eventId = req.params.id as string;
-  const teamId = req.params.teamId as string;
+teamsRouter.patch('/teams/:teamId/lock', validateBody(LockTeamSchema), (req: Request, res: Response) => {
+  const eventId = (req.params as { id: string; teamId: string }).id;
+  const teamId = (req.params as { id: string; teamId: string }).teamId;
   const { isLocked } = req.body;
 
   const team = store.teams.get(teamId);

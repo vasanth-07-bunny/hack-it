@@ -237,8 +237,17 @@ export const LiveLeaderboardView: React.FC<LiveLeaderboardProps> = ({ compact = 
                 return (
                   <tr
                     key={teamRank.teamId}
+                    tabIndex={0}
+                    role="button"
+                    aria-label={`View score breakdown for ${teamRank.teamName}, Rank ${teamRank.rank}, Score ${teamRank.totalScore}`}
                     onClick={() => setSelectedTeamBreakdown(teamRank)}
-                    className={`cursor-pointer transition-all duration-300 ${
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        setSelectedTeamBreakdown(teamRank);
+                      }
+                    }}
+                    className={`cursor-pointer transition-all duration-300 focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:outline-none ${
                       isHighlighted ? 'bg-brand-cyan/20 ring-1 ring-brand-cyan' : 'hover:bg-slate-800/40'
                     } ${isTop1 ? 'bg-amber-500/5' : ''}`}
                   >

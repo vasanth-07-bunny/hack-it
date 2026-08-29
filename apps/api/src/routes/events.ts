@@ -1,15 +1,15 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 import { store } from '../db/store.js';
 import { broadcastEventStatus } from '../sockets/index.js';
 
 export const eventsRouter = Router();
 
-eventsRouter.get('/', (req, res) => {
+eventsRouter.get('/', (_req: Request, res: Response) => {
   const events = Array.from(store.events.values());
   res.json(events);
 });
 
-eventsRouter.get('/:id', (req, res) => {
+eventsRouter.get('/:id', (req: Request, res: Response) => {
   const event = store.events.get(req.params.id);
   if (!event) {
     return res.status(404).json({ error: 'Event not found' });
@@ -17,7 +17,7 @@ eventsRouter.get('/:id', (req, res) => {
   res.json(event);
 });
 
-eventsRouter.patch('/:id/status', (req, res) => {
+eventsRouter.patch('/:id/status', (req: Request, res: Response) => {
   const event = store.events.get(req.params.id);
   if (!event) {
     return res.status(404).json({ error: 'Event not found' });
@@ -32,7 +32,7 @@ eventsRouter.patch('/:id/status', (req, res) => {
   res.json(event);
 });
 
-eventsRouter.patch('/:id/config', (req, res) => {
+eventsRouter.patch('/:id/config', (req: Request, res: Response) => {
   const event = store.events.get(req.params.id);
   if (!event) {
     return res.status(404).json({ error: 'Event not found' });

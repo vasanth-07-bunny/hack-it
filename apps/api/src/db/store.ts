@@ -14,7 +14,7 @@ import {
   TeamRanking
 } from '@abhiyantrix/shared-types';
 
-const SECRET_KEY = 'abhiyantrix_super_secret_hmac_signing_key_2026';
+const SECRET_KEY = process.env.HMAC_SECRET || 'abhiyantrix_super_secret_hmac_signing_key_2026';
 
 export class DataStore {
   users: Map<string, User> = new Map();
@@ -48,7 +48,11 @@ export class DataStore {
       }
       const [regId, uId, evId, sig] = parts;
       const expectedSig = crypto.createHmac('sha256', SECRET_KEY).update(`${regId}:${uId}:${evId}`).digest('hex').substring(0, 16);
-      if (sig !== expectedSig) {
+      
+      const sigBuffer = Buffer.from(sig, 'utf8');
+      const expectedSigBuffer = Buffer.from(expectedSig, 'utf8');
+      
+      if (sigBuffer.length !== expectedSigBuffer.length || !crypto.timingSafeEqual(sigBuffer, expectedSigBuffer)) {
         return { valid: false, error: 'Invalid Cryptographic Signature (Tampered QR)' };
       }
       return { valid: true, registrationId: regId, userId: uId, eventId: evId };

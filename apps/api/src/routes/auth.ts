@@ -1,11 +1,14 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
+import jwt from 'jsonwebtoken';
 import { store } from '../db/store.js';
 import { UserRole } from '@abhiyantrix/shared-types';
+import { strictOperationLimiter } from '../middleware/security.js';
 
 export const authRouter = Router();
+const JWT_SECRET = process.env.JWT_SECRET || 'abhiyantrix_jwt_dev_key_2026';
 
 // Fast switch or login for demo / role sandbox
-authRouter.post('/login', (req, res) => {
+authRouter.post('/login', strictOperationLimiter, (req: Request, res: Response) => {
   const { email, role, userId } = req.body;
 
   let user = null;
@@ -21,12 +24,22 @@ authRouter.post('/login', (req, res) => {
     return res.status(404).json({ error: 'User not found' });
   }
 
-  // Issue demo session token
-  const token = `demo_jwt_token_${user.id}_${user.role}_${Date.now()}`;
+  // Issue real cryptographic JWT token
+  const token = jwt.sign(
+    {
+      sub: user.id,
+      email: user.email,
+      role: user.role,
+      name: user.fullName
+    },
+    JWT_SECRET,
+    { expiresIn: '7d' }
+  );
+
   return res.json({ token, user });
 });
 
-authRouter.get('/users', (req, res) => {
+authRouter.get('/users', (req: Request, res: Response) => {
   const role = req.query.role as UserRole;
   let users = Array.from(store.users.values());
   if (role) {
@@ -35,21 +48,26 @@ authRouter.get('/users', (req, res) => {
   return res.json(users);
 });
 
-authRouter.get('/me', (req, res) => {
+authRouter.get('/me', (req: Request, res: Response) => {
   const authHeader = req.headers.authorization;
   if (!authHeader) {
-    // Default to organizer for convenience or participant
     const defaultUser = store.users.get('usr-org-1');
     return res.json({ user: defaultUser });
   }
 
   const token = authHeader.replace('Bearer ', '');
-  const match = token.match(/demo_jwt_token_([^_]+)_/);
-  if (match) {
-    const userId = match[1];
-    const user = store.users.get(userId);
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET) as { sub: string; role: string };
+    const user = store.users.get(decoded.sub);
     if (user) {
       return res.json({ user });
+    }
+  } catch (_err) {
+    // Fallback for legacy demo token format
+    const match = token.match(/demo_jwt_token_([^_]+)_/);
+    if (match) {
+      const user = store.users.get(match[1]);
+      if (user) return res.json({ user });
     }
   }
 

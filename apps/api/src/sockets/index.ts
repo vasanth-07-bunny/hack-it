@@ -1,4 +1,4 @@
-import { Server as SocketIOServer } from 'socket.io';
+import { Server as SocketIOServer, Socket } from 'socket.io';
 import {
   Announcement,
   CheckInRecord,
@@ -12,38 +12,48 @@ let ioInstance: SocketIOServer | null = null;
 export function initSocketServer(io: SocketIOServer) {
   ioInstance = io;
 
-  io.on('connection', (socket) => {
-    // console.log(`[WebSocket] Client connected: ${socket.id}`);
+  io.on('connection', (socket: Socket) => {
+    socket.on('subscribe:event', (payload: { eventId?: string; role?: string; userId?: string }) => {
+      if (!payload || !payload.eventId) return;
 
-    socket.on('subscribe:event', (payload: { eventId: string; role: string; userId?: string }) => {
-      const eventRoom = `event:${payload.eventId}`;
-      const roleRoom = `event:${payload.eventId}:role:${payload.role}`;
+      const sanitizedEventId = String(payload.eventId).replace(/[^a-zA-Z0-9_-]/g, '');
+      const eventRoom = `event:${sanitizedEventId}`;
       socket.join(eventRoom);
-      socket.join(roleRoom);
-      if (payload.userId) {
-        socket.join(`user:${payload.userId}`);
+
+      if (payload.role) {
+        const sanitizedRole = String(payload.role).replace(/[^a-zA-Z0-9_-]/g, '');
+        const roleRoom = `event:${sanitizedEventId}:role:${sanitizedRole}`;
+        socket.join(roleRoom);
       }
-      // console.log(`[WebSocket] ${socket.id} subscribed to ${eventRoom} as ${payload.role}`);
+
+      if (payload.userId) {
+        const sanitizedUserId = String(payload.userId).replace(/[^a-zA-Z0-9_-]/g, '');
+        socket.join(`user:${sanitizedUserId}`);
+      }
     });
 
-    socket.on('unsubscribe:event', (payload: { eventId: string }) => {
-      socket.leave(`event:${payload.eventId}`);
+    socket.on('unsubscribe:event', (payload: { eventId?: string }) => {
+      if (!payload || !payload.eventId) return;
+      const sanitizedEventId = String(payload.eventId).replace(/[^a-zA-Z0-9_-]/g, '');
+      socket.leave(`event:${sanitizedEventId}`);
     });
 
-    socket.on('disconnect', () => {
-      // console.log(`[WebSocket] Client disconnected: ${socket.id}`);
+    socket.on('error', (err) => {
+      console.error('[WebSocket Error]:', err);
     });
   });
 }
 
 export function broadcastAnnouncement(eventId: string, announcement: Announcement) {
   if (!ioInstance) return;
-  ioInstance.to(`event:${eventId}`).emit('announcement:new', announcement);
+  const sanitizedId = String(eventId).replace(/[^a-zA-Z0-9_-]/g, '');
+  ioInstance.to(`event:${sanitizedId}`).emit('announcement:new', announcement);
 }
 
 export function broadcastCheckInUpdate(eventId: string, totalCheckedIn: number, totalRegistered: number, record: CheckInRecord) {
   if (!ioInstance) return;
-  ioInstance.to(`event:${eventId}`).emit('checkin:update', {
+  const sanitizedId = String(eventId).replace(/[^a-zA-Z0-9_-]/g, '');
+  ioInstance.to(`event:${sanitizedId}`).emit('checkin:update', {
     totalCheckedIn,
     totalRegistered,
     record
@@ -52,20 +62,24 @@ export function broadcastCheckInUpdate(eventId: string, totalCheckedIn: number, 
 
 export function broadcastScoreSubmitted(eventId: string, payload: { submissionId: string; teamId: string; judgeId: string; totalWeightedScore: number }) {
   if (!ioInstance) return;
-  ioInstance.to(`event:${eventId}`).emit('score:submitted', payload);
+  const sanitizedId = String(eventId).replace(/[^a-zA-Z0-9_-]/g, '');
+  ioInstance.to(`event:${sanitizedId}`).emit('score:submitted', payload);
 }
 
 export function broadcastLeaderboardUpdate(eventId: string, leaderboard: LeaderboardData) {
   if (!ioInstance) return;
-  ioInstance.to(`event:${eventId}`).emit('leaderboard:update', leaderboard);
+  const sanitizedId = String(eventId).replace(/[^a-zA-Z0-9_-]/g, '');
+  ioInstance.to(`event:${sanitizedId}`).emit('leaderboard:update', leaderboard);
 }
 
 export function broadcastTeamUpdate(eventId: string, team: Team) {
   if (!ioInstance) return;
-  ioInstance.to(`event:${eventId}`).emit('team:updated', team);
+  const sanitizedId = String(eventId).replace(/[^a-zA-Z0-9_-]/g, '');
+  ioInstance.to(`event:${sanitizedId}`).emit('team:updated', team);
 }
 
 export function broadcastEventStatus(eventId: string, status: EventStatus) {
   if (!ioInstance) return;
-  ioInstance.to(`event:${eventId}`).emit('event:status_changed', { eventId, status });
+  const sanitizedId = String(eventId).replace(/[^a-zA-Z0-9_-]/g, '');
+  ioInstance.to(`event:${sanitizedId}`).emit('event:status_changed', { eventId: sanitizedId, status });
 }
