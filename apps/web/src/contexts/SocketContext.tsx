@@ -8,6 +8,8 @@ import {
 } from '@abhiyantrix/shared-types';
 import { useAuth } from './AuthContext';
 
+import { getApiUrl, getSocketUrl } from '../services/api';
+
 export interface LiveToast {
   id: string;
   type: 'announcement' | 'checkin' | 'score' | 'leaderboard';
@@ -120,7 +122,7 @@ export const SocketProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   useEffect(() => {
     const fetchAnnouncements = async () => {
       try {
-        const res = await fetch(`/api/events/${eventId}/announcements`);
+        const res = await fetch(getApiUrl(`/api/events/${eventId}/announcements`));
         if (res.ok) {
           const data: Announcement[] = await res.json();
           setActiveAnnouncements(data);
@@ -163,7 +165,7 @@ export const SocketProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   };
 
   useEffect(() => {
-    const socketClient = io(window.location.origin, {
+    const socketClient = io(getSocketUrl(), {
       transports: ['websocket', 'polling']
     });
 

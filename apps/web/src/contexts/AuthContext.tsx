@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { User, UserRole } from '@abhiyantrix/shared-types';
+import { getApiUrl } from '../services/api';
 
 interface AuthContextType {
   currentUser: User | null;
@@ -21,7 +22,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const fetchUsers = async () => {
     try {
-      const res = await fetch('/api/auth/users');
+      const res = await fetch(getApiUrl('/api/auth/users'));
       if (res.ok) {
         const users: User[] = await res.json();
         setAllUsers(users);
