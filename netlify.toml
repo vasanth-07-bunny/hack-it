@@ -1,7 +1,7 @@
 [build]
   base = ""
   publish = "apps/web/dist"
-  command = "npm run build --workspace=@abhiyantrix/web"
+  command = "npm run build"
 
 [build.environment]
   NODE_VERSION = "20"
