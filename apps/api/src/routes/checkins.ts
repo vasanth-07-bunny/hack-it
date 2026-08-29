@@ -64,6 +64,7 @@ checkinsRouter.post('/register', strictOperationLimiter, validateBody(RegisterSc
   };
 
   store.registrations.set(registration.id, registration);
+  store.persist();
 
   return res.status(201).json({
     message: 'Registration successful! Signed QR Pass generated.',
@@ -166,6 +167,7 @@ checkinsRouter.post('/check-in/verify', strictOperationLimiter, validateBody(Che
   };
 
   store.checkIns.set(checkInRecord.id, checkInRecord);
+  store.persist();
 
   // Calculate totals and broadcast live update
   const totalRegistered = Array.from(store.registrations.values()).filter(r => r.eventId === eventId).length;

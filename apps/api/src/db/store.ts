@@ -14,6 +14,8 @@ import {
   TeamRanking
 } from '@abhiyantrix/shared-types';
 
+import { persistence } from './persistence.js';
+
 const SECRET_KEY = process.env.HMAC_SECRET || 'abhiyantrix_super_secret_hmac_signing_key_2026';
 
 export class DataStore {
@@ -29,7 +31,46 @@ export class DataStore {
   previousRankings: Map<string, Map<string, number>> = new Map(); // eventId -> (teamId -> rank)
 
   constructor() {
-    this.seedDemoData();
+    const loaded = this.hydrateFromDisk();
+    if (!loaded) {
+      this.seedDemoData();
+      this.persist();
+    }
+  }
+
+  public persist(): void {
+    const snapshot = {
+      users: Array.from(this.users.entries()),
+      events: Array.from(this.events.entries()),
+      registrations: Array.from(this.registrations.entries()),
+      checkIns: Array.from(this.checkIns.entries()),
+      teams: Array.from(this.teams.entries()),
+      submissions: Array.from(this.submissions.entries()),
+      rubrics: Array.from(this.rubrics.entries()),
+      scores: Array.from(this.scores.entries()),
+      announcements: Array.from(this.announcements.entries())
+    };
+    persistence.saveSnapshot(snapshot);
+  }
+
+  private hydrateFromDisk(): boolean {
+    const snapshot = persistence.loadSnapshot();
+    if (!snapshot) return false;
+
+    try {
+      if (Array.isArray(snapshot['users'])) this.users = new Map(snapshot['users'] as [string, User][]);
+      if (Array.isArray(snapshot['events'])) this.events = new Map(snapshot['events'] as [string, Event][]);
+      if (Array.isArray(snapshot['registrations'])) this.registrations = new Map(snapshot['registrations'] as [string, Registration][]);
+      if (Array.isArray(snapshot['checkIns'])) this.checkIns = new Map(snapshot['checkIns'] as [string, CheckInRecord][]);
+      if (Array.isArray(snapshot['teams'])) this.teams = new Map(snapshot['teams'] as [string, Team][]);
+      if (Array.isArray(snapshot['submissions'])) this.submissions = new Map(snapshot['submissions'] as [string, Submission][]);
+      if (Array.isArray(snapshot['rubrics'])) this.rubrics = new Map(snapshot['rubrics'] as [string, Rubric][]);
+      if (Array.isArray(snapshot['scores'])) this.scores = new Map(snapshot['scores'] as [string, ScoreSubmission][]);
+      if (Array.isArray(snapshot['announcements'])) this.announcements = new Map(snapshot['announcements'] as [string, Announcement][]);
+      return this.events.size > 0;
+    } catch {
+      return false;
+    }
   }
 
   // Cryptographic QR Token signing & verification

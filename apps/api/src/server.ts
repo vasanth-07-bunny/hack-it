@@ -63,8 +63,11 @@ app.get('/api/health', (_req, res) => {
   });
 });
 
+import { googleRouter } from './routes/google.js';
+
 // Modular Routes
 app.use('/api/auth', authRouter);
+app.use('/api/google', googleRouter);
 app.use('/api/events', eventsRouter);
 app.use('/api/events/:id', checkinsRouter);
 app.use('/api/events/:id', teamsRouter);

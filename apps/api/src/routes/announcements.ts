@@ -41,6 +41,7 @@ announcementsRouter.post('/announcements', validateBody(CreateAnnouncementSchema
   };
 
   store.announcements.set(announcement.id, announcement);
+  store.persist();
 
   // Real-time WebSocket push broadcast to all connected clients in this event room
   broadcastAnnouncement(eventId, announcement);

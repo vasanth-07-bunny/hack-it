@@ -1,0 +1,2210 @@
+{
+  "users": [
+    [
+      "usr-org-1",
+      {
+        "id": "usr-org-1",
+        "email": "lead.organizer@abhiyantrix.io",
+        "fullName": "Alex Vance (Lead Organizer)",
+        "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+        "role": "organizer",
+        "collegeOrCompany": "Abhiyantrix Foundation",
+        "skills": [
+          "Event Operations",
+          "System Architecture",
+          "Community Management"
+        ],
+        "preferredRole": "Event Director",
+        "bio": "Leading operations and hackathon infrastructure for 5,000+ engineers globally.",
+        "createdAt": "2026-08-19T11:09:23.701Z"
+      }
+    ],
+    [
+      "usr-judge-1",
+      {
+        "id": "usr-judge-1",
+        "email": "sarah.chen@deepai.org",
+        "fullName": "Dr. Sarah Chen",
+        "avatarUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
+        "role": "judge",
+        "collegeOrCompany": "DeepMind Research Fellow / MIT",
+        "skills": [
+          "Generative AI",
+          "LLM Architectures",
+          "Computer Vision",
+          "PyTorch"
+        ],
+        "preferredRole": "AI & Agents Lead Judge",
+        "bio": "Research scientist focusing on autonomous multi-agent reasoning and neural architectures.",
+        "createdAt": "2026-08-21T11:09:23.701Z"
+      }
+    ],
+    [
+      "usr-judge-2",
+      {
+        "id": "usr-judge-2",
+        "email": "marcus.vance@soliditylabs.io",
+        "fullName": "Marcus Vance",
+        "avatarUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+        "role": "judge",
+        "collegeOrCompany": "Decentralized Capital Ventures",
+        "skills": [
+          "Smart Contracts",
+          "Zero Knowledge",
+          "DeFi Protocols",
+          "Rust"
+        ],
+        "preferredRole": "Web3 Lead Judge",
+        "bio": "General Partner backing seed-stage cryptographic infrastructure and DeFi protocols.",
+        "createdAt": "2026-08-22T11:09:23.701Z"
+      }
+    ],
+    [
+      "usr-judge-3",
+      {
+        "id": "usr-judge-3",
+        "email": "elena.rostova@healthpulse.ai",
+        "fullName": "Dr. Elena Rostova",
+        "avatarUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80",
+        "role": "judge",
+        "collegeOrCompany": "BioTech Innovations Stanford",
+        "skills": [
+          "BioInformatics",
+          "Clinical ML",
+          "Medical Devices",
+          "Python"
+        ],
+        "preferredRole": "HealthTech Lead Judge",
+        "bio": "Physician-engineer evaluating next-generation diagnostic and biomedical AI solutions.",
+        "createdAt": "2026-08-23T11:09:23.701Z"
+      }
+    ],
+    [
+      "usr-judge-4",
+      {
+        "id": "usr-judge-4",
+        "email": "dave.kumar@cloudscale.net",
+        "fullName": "Dave Kumar",
+        "avatarUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
+        "role": "judge",
+        "collegeOrCompany": "CloudScale Principal Architect",
+        "skills": [
+          "Distributed Systems",
+          "Kubernetes",
+          "Scalability",
+          "Go"
+        ],
+        "preferredRole": "Infrastructure & Climate Judge",
+        "bio": "Architecting high-throughput distributed systems and low-carbon computing grids.",
+        "createdAt": "2026-08-24T11:09:23.701Z"
+      }
+    ],
+    [
+      "usr-p-1",
+      {
+        "id": "usr-p-1",
+        "email": "rohan.sharma@tech.edu",
+        "fullName": "Rohan Sharma",
+        "avatarUrl": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80",
+        "role": "participant",
+        "collegeOrCompany": "Stanford University",
+        "skills": [
+          "Python",
+          "FastAPI",
+          "PyTorch",
+          "LangChain"
+        ],
+        "preferredRole": "AI/ML Engineer",
+        "bio": "Passionate hacker and engineer working on cutting edge tech at Stanford University.",
+        "createdAt": "2026-08-14T11:09:23.701Z"
+      }
+    ],
+    [
+      "usr-p-2",
+      {
+        "id": "usr-p-2",
+        "email": "maya.lin@design.io",
+        "fullName": "Maya Lin",
+        "avatarUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80",
+        "role": "participant",
+        "collegeOrCompany": "RISD / Berkeley",
+        "skills": [
+          "UI/UX",
+          "Figma",
+          "React",
+          "TailwindCSS"
+        ],
+        "preferredRole": "Product Designer",
+        "bio": "Passionate hacker and engineer working on cutting edge tech at RISD / Berkeley.",
+        "createdAt": "2026-08-15T11:09:23.702Z"
+      }
+    ],
+    [
+      "usr-p-3",
+      {
+        "id": "usr-p-3",
+        "email": "kabir.p@dev.org",
+        "fullName": "Kabir Patel",
+        "avatarUrl": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=150&auto=format&fit=crop&q=80",
+        "role": "participant",
+        "collegeOrCompany": "Carnegie Mellon",
+        "skills": [
+          "Rust",
+          "Solidity",
+          "Ethereum",
+          "TypeScript"
+        ],
+        "preferredRole": "Smart Contract Dev",
+        "bio": "Passionate hacker and engineer working on cutting edge tech at Carnegie Mellon.",
+        "createdAt": "2026-08-16T11:09:23.702Z"
+      }
+    ],
+    [
+      "usr-p-4",
+      {
+        "id": "usr-p-4",
+        "email": "chloe.d@sorbonne.fr",
+        "fullName": "Chloe Dubois",
+        "avatarUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80",
+        "role": "participant",
+        "collegeOrCompany": "École Polytechnique",
+        "skills": [
+          "Computer Vision",
+          "PyTorch",
+          "C++",
+          "OpenCV"
+        ],
+        "preferredRole": "ML Researcher",
+        "bio": "Passionate hacker and engineer working on cutting edge tech at École Polytechnique.",
+        "createdAt": "2026-08-17T11:09:23.702Z"
+      }
+    ],
+    [
+      "usr-p-5",
+      {
+        "id": "usr-p-5",
+        "email": "arjun.nair@iitb.ac.in",
+        "fullName": "Arjun Nair",
+        "avatarUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format&fit=crop&q=80",
+        "role": "participant",
+        "collegeOrCompany": "IIT Bombay",
+        "skills": [
+          "Node.js",
+          "Go",
+          "PostgreSQL",
+          "Docker"
+        ],
+        "preferredRole": "Backend Architect",
+        "bio": "Passionate hacker and engineer working on cutting edge tech at IIT Bombay.",
+        "createdAt": "2026-08-18T11:09:23.702Z"
+      }
+    ],
+    [
+      "usr-p-6",
+      {
+        "id": "usr-p-6",
+        "email": "aisha.m@kaust.edu.sa",
+        "fullName": "Aisha Al-Mansoor",
+        "avatarUrl": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150&auto=format&fit=crop&q=80",
+        "role": "participant",
+        "collegeOrCompany": "KAUST",
+        "skills": [
+          "BioInformatics",
+          "Genomics",
+          "Python",
+          "Next.js"
+        ],
+        "preferredRole": "HealthTech Specialist",
+        "bio": "Passionate hacker and engineer working on cutting edge tech at KAUST.",
+        "createdAt": "2026-08-19T11:09:23.702Z"
+      }
+    ],
+    [
+      "usr-p-7",
+      {
+        "id": "usr-p-7",
+        "email": "liam.oc@trinity.ie",
+        "fullName": "Liam O’Connor",
+        "avatarUrl": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&auto=format&fit=crop&q=80",
+        "role": "participant",
+        "collegeOrCompany": "Trinity College Dublin",
+        "skills": [
+          "React Native",
+          "WebSockets",
+          "TailwindCSS",
+          "GraphQL"
+        ],
+        "preferredRole": "Frontend Engineer",
+        "bio": "Passionate hacker and engineer working on cutting edge tech at Trinity College Dublin.",
+        "createdAt": "2026-08-20T11:09:23.702Z"
+      }
+    ],
+    [
+      "usr-p-8",
+      {
+        "id": "usr-p-8",
+        "email": "sophia.chen@waterloo.ca",
+        "fullName": "Sophia Chen",
+        "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+        "role": "participant",
+        "collegeOrCompany": "University of Waterloo",
+        "skills": [
+          "Solidity",
+          "Zero Knowledge",
+          "Rust",
+          "Web3.js"
+        ],
+        "preferredRole": "DeFi Engineer",
+        "bio": "Passionate hacker and engineer working on cutting edge tech at University of Waterloo.",
+        "createdAt": "2026-08-21T11:09:23.702Z"
+      }
+    ],
+    [
+      "usr-p-9",
+      {
+        "id": "usr-p-9",
+        "email": "david.kim@kaist.ac.kr",
+        "fullName": "David Kim",
+        "avatarUrl": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=150&auto=format&fit=crop&q=80",
+        "role": "participant",
+        "collegeOrCompany": "KAIST",
+        "skills": [
+          "IoT",
+          "Embedded C",
+          "Climate Sensors",
+          "MQTT"
+        ],
+        "preferredRole": "IoT / Hardware Dev",
+        "bio": "Passionate hacker and engineer working on cutting edge tech at KAIST.",
+        "createdAt": "2026-08-22T11:09:23.702Z"
+      }
+    ],
+    [
+      "usr-p-10",
+      {
+        "id": "usr-p-10",
+        "email": "priya.sundaram@gatech.edu",
+        "fullName": "Priya Sundaram",
+        "avatarUrl": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=150&auto=format&fit=crop&q=80",
+        "role": "participant",
+        "collegeOrCompany": "Georgia Tech",
+        "skills": [
+          "NLP",
+          "Transformers",
+          "FastAPI",
+          "RAG"
+        ],
+        "preferredRole": "AI/ML Engineer",
+        "bio": "Passionate hacker and engineer working on cutting edge tech at Georgia Tech.",
+        "createdAt": "2026-08-23T11:09:23.702Z"
+      }
+    ],
+    [
+      "usr-p-11",
+      {
+        "id": "usr-p-11",
+        "email": "vikram.j@outlook.com",
+        "fullName": "Vikram Joshi (Looking for Team)",
+        "avatarUrl": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80",
+        "role": "participant",
+        "collegeOrCompany": "UT Austin",
+        "skills": [
+          "React",
+          "TypeScript",
+          "TailwindCSS",
+          "Figma"
+        ],
+        "preferredRole": "Frontend Dev",
+        "bio": "Passionate hacker and engineer working on cutting edge tech at UT Austin.",
+        "createdAt": "2026-08-24T11:09:23.702Z"
+      }
+    ],
+    [
+      "usr-p-12",
+      {
+        "id": "usr-p-12",
+        "email": "zara.hadid@cam.ac.uk",
+        "fullName": "Zara Hadid (Looking for Team)",
+        "avatarUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80",
+        "role": "participant",
+        "collegeOrCompany": "Cambridge University",
+        "skills": [
+          "AI Agents",
+          "Reinforcement Learning",
+          "Python"
+        ],
+        "preferredRole": "AI Specialist",
+        "bio": "Passionate hacker and engineer working on cutting edge tech at Cambridge University.",
+        "createdAt": "2026-08-25T11:09:23.702Z"
+      }
+    ],
+    [
+      "usr-p-13",
+      {
+        "id": "usr-p-13",
+        "email": "ethan.h@mit.edu",
+        "fullName": "Ethan Hunt (Looking for Team)",
+        "avatarUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+        "role": "participant",
+        "collegeOrCompany": "MIT Media Lab",
+        "skills": [
+          "Smart Contracts",
+          "DeFi",
+          "Rust"
+        ],
+        "preferredRole": "Web3 Researcher",
+        "bio": "Passionate hacker and engineer working on cutting edge tech at MIT Media Lab.",
+        "createdAt": "2026-08-26T11:09:23.702Z"
+      }
+    ]
+  ],
+  "events": [
+    [
+      "ev-abhiyantrix-2026",
+      {
+        "id": "ev-abhiyantrix-2026",
+        "title": "Abhiyantrix Global HackFest 2026",
+        "slug": "abhiyantrix-2026",
+        "description": "The premier 48-hour multidisciplinary hackathon tackling AI Agents, Web3 DeFi, HealthTech, and Climate Innovation with $50,000+ in prize pools.",
+        "startDate": "2026-08-27T23:09:23.701Z",
+        "endDate": "2026-08-29T23:09:23.701Z",
+        "venue": "Innovation Tech Hub, Convention Grand Hall & Virtual Metaverse",
+        "status": "judging",
+        "tracks": [
+          "AI & Autonomous Agents",
+          "Web3 & Decentralized Finance",
+          "HealthTech & BioInformatics",
+          "ClimateTech & Smart Cities"
+        ],
+        "config": {
+          "allowVirtualCheckIn": true,
+          "teamRosterLocked": false,
+          "maxTeamSize": 4,
+          "minTeamSize": 2,
+          "tracks": [
+            "AI & Autonomous Agents",
+            "Web3 & Decentralized Finance",
+            "HealthTech & BioInformatics",
+            "ClimateTech & Smart Cities"
+          ]
+        }
+      }
+    ]
+  ],
+  "registrations": [
+    [
+      "reg-usr-p-1",
+      {
+        "id": "reg-usr-p-1",
+        "userId": "usr-p-1",
+        "eventId": "ev-abhiyantrix-2026",
+        "qrToken": "cmVnLXVzci1wLTE6dXNyLXAtMTpldi1hYmhpeWFudHJpeC0yMDI2OmE5YWQ3YjViYTZhYmYyZDg",
+        "status": "checked_in",
+        "tShirtSize": "M",
+        "dietaryRequirements": "Vegetarian",
+        "registeredAt": "2026-08-19T11:09:23.702Z",
+        "checkedInAt": "2026-08-28T05:09:23.702Z",
+        "checkInMethod": "onsite_qr_scan",
+        "user": {
+          "id": "usr-p-1",
+          "email": "rohan.sharma@tech.edu",
+          "fullName": "Rohan Sharma",
+          "avatarUrl": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80",
+          "role": "participant",
+          "collegeOrCompany": "Stanford University",
+          "skills": [
+            "Python",
+            "FastAPI",
+            "PyTorch",
+            "LangChain"
+          ],
+          "preferredRole": "AI/ML Engineer",
+          "bio": "Passionate hacker and engineer working on cutting edge tech at Stanford University.",
+          "createdAt": "2026-08-14T11:09:23.701Z"
+        }
+      }
+    ],
+    [
+      "reg-usr-p-2",
+      {
+        "id": "reg-usr-p-2",
+        "userId": "usr-p-2",
+        "eventId": "ev-abhiyantrix-2026",
+        "qrToken": "cmVnLXVzci1wLTI6dXNyLXAtMjpldi1hYmhpeWFudHJpeC0yMDI2OmFlNDdkNGE1OWY1MjZmMzY",
+        "status": "checked_in",
+        "tShirtSize": "L",
+        "dietaryRequirements": "None",
+        "registeredAt": "2026-08-19T23:09:23.702Z",
+        "checkedInAt": "2026-08-28T07:09:23.702Z",
+        "checkInMethod": "virtual_self_checkin",
+        "user": {
+          "id": "usr-p-2",
+          "email": "maya.lin@design.io",
+          "fullName": "Maya Lin",
+          "avatarUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80",
+          "role": "participant",
+          "collegeOrCompany": "RISD / Berkeley",
+          "skills": [
+            "UI/UX",
+            "Figma",
+            "React",
+            "TailwindCSS"
+          ],
+          "preferredRole": "Product Designer",
+          "bio": "Passionate hacker and engineer working on cutting edge tech at RISD / Berkeley.",
+          "createdAt": "2026-08-15T11:09:23.702Z"
+        }
+      }
+    ],
+    [
+      "reg-usr-p-3",
+      {
+        "id": "reg-usr-p-3",
+        "userId": "usr-p-3",
+        "eventId": "ev-abhiyantrix-2026",
+        "qrToken": "cmVnLXVzci1wLTM6dXNyLXAtMzpldi1hYmhpeWFudHJpeC0yMDI2OmEyMTY3NWEyMGRlNmRmNGI",
+        "status": "checked_in",
+        "tShirtSize": "XL",
+        "dietaryRequirements": "None",
+        "registeredAt": "2026-08-20T11:09:23.702Z",
+        "checkedInAt": "2026-08-28T09:09:23.702Z",
+        "checkInMethod": "onsite_qr_scan",
+        "user": {
+          "id": "usr-p-3",
+          "email": "kabir.p@dev.org",
+          "fullName": "Kabir Patel",
+          "avatarUrl": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=150&auto=format&fit=crop&q=80",
+          "role": "participant",
+          "collegeOrCompany": "Carnegie Mellon",
+          "skills": [
+            "Rust",
+            "Solidity",
+            "Ethereum",
+            "TypeScript"
+          ],
+          "preferredRole": "Smart Contract Dev",
+          "bio": "Passionate hacker and engineer working on cutting edge tech at Carnegie Mellon.",
+          "createdAt": "2026-08-16T11:09:23.702Z"
+        }
+      }
+    ],
+    [
+      "reg-usr-p-4",
+      {
+        "id": "reg-usr-p-4",
+        "userId": "usr-p-4",
+        "eventId": "ev-abhiyantrix-2026",
+        "qrToken": "cmVnLXVzci1wLTQ6dXNyLXAtNDpldi1hYmhpeWFudHJpeC0yMDI2OmM1ODMzMjFlYzA3NTMyOTE",
+        "status": "checked_in",
+        "tShirtSize": "S",
+        "dietaryRequirements": "Vegetarian",
+        "registeredAt": "2026-08-20T23:09:23.702Z",
+        "checkedInAt": "2026-08-28T11:09:23.702Z",
+        "checkInMethod": "virtual_self_checkin",
+        "user": {
+          "id": "usr-p-4",
+          "email": "chloe.d@sorbonne.fr",
+          "fullName": "Chloe Dubois",
+          "avatarUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80",
+          "role": "participant",
+          "collegeOrCompany": "École Polytechnique",
+          "skills": [
+            "Computer Vision",
+            "PyTorch",
+            "C++",
+            "OpenCV"
+          ],
+          "preferredRole": "ML Researcher",
+          "bio": "Passionate hacker and engineer working on cutting edge tech at École Polytechnique.",
+          "createdAt": "2026-08-17T11:09:23.702Z"
+        }
+      }
+    ],
+    [
+      "reg-usr-p-5",
+      {
+        "id": "reg-usr-p-5",
+        "userId": "usr-p-5",
+        "eventId": "ev-abhiyantrix-2026",
+        "qrToken": "cmVnLXVzci1wLTU6dXNyLXAtNTpldi1hYmhpeWFudHJpeC0yMDI2OjVkOWZjNzg2NTMyODk2OGQ",
+        "status": "checked_in",
+        "tShirtSize": "M",
+        "dietaryRequirements": "None",
+        "registeredAt": "2026-08-21T11:09:23.702Z",
+        "checkedInAt": "2026-08-28T13:09:23.702Z",
+        "checkInMethod": "onsite_qr_scan",
+        "user": {
+          "id": "usr-p-5",
+          "email": "arjun.nair@iitb.ac.in",
+          "fullName": "Arjun Nair",
+          "avatarUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format&fit=crop&q=80",
+          "role": "participant",
+          "collegeOrCompany": "IIT Bombay",
+          "skills": [
+            "Node.js",
+            "Go",
+            "PostgreSQL",
+            "Docker"
+          ],
+          "preferredRole": "Backend Architect",
+          "bio": "Passionate hacker and engineer working on cutting edge tech at IIT Bombay.",
+          "createdAt": "2026-08-18T11:09:23.702Z"
+        }
+      }
+    ],
+    [
+      "reg-usr-p-6",
+      {
+        "id": "reg-usr-p-6",
+        "userId": "usr-p-6",
+        "eventId": "ev-abhiyantrix-2026",
+        "qrToken": "cmVnLXVzci1wLTY6dXNyLXAtNjpldi1hYmhpeWFudHJpeC0yMDI2OmViMWIyYTM4YjIxMGNiZmI",
+        "status": "checked_in",
+        "tShirtSize": "L",
+        "dietaryRequirements": "None",
+        "registeredAt": "2026-08-21T23:09:23.702Z",
+        "checkedInAt": "2026-08-28T15:09:23.702Z",
+        "checkInMethod": "virtual_self_checkin",
+        "user": {
+          "id": "usr-p-6",
+          "email": "aisha.m@kaust.edu.sa",
+          "fullName": "Aisha Al-Mansoor",
+          "avatarUrl": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150&auto=format&fit=crop&q=80",
+          "role": "participant",
+          "collegeOrCompany": "KAUST",
+          "skills": [
+            "BioInformatics",
+            "Genomics",
+            "Python",
+            "Next.js"
+          ],
+          "preferredRole": "HealthTech Specialist",
+          "bio": "Passionate hacker and engineer working on cutting edge tech at KAUST.",
+          "createdAt": "2026-08-19T11:09:23.702Z"
+        }
+      }
+    ],
+    [
+      "reg-usr-p-7",
+      {
+        "id": "reg-usr-p-7",
+        "userId": "usr-p-7",
+        "eventId": "ev-abhiyantrix-2026",
+        "qrToken": "cmVnLXVzci1wLTc6dXNyLXAtNzpldi1hYmhpeWFudHJpeC0yMDI2Ojc1NmUxMWE5MzU5YTY5MjE",
+        "status": "checked_in",
+        "tShirtSize": "XL",
+        "dietaryRequirements": "Vegetarian",
+        "registeredAt": "2026-08-22T11:09:23.702Z",
+        "checkedInAt": "2026-08-28T17:09:23.702Z",
+        "checkInMethod": "onsite_qr_scan",
+        "user": {
+          "id": "usr-p-7",
+          "email": "liam.oc@trinity.ie",
+          "fullName": "Liam O’Connor",
+          "avatarUrl": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&auto=format&fit=crop&q=80",
+          "role": "participant",
+          "collegeOrCompany": "Trinity College Dublin",
+          "skills": [
+            "React Native",
+            "WebSockets",
+            "TailwindCSS",
+            "GraphQL"
+          ],
+          "preferredRole": "Frontend Engineer",
+          "bio": "Passionate hacker and engineer working on cutting edge tech at Trinity College Dublin.",
+          "createdAt": "2026-08-20T11:09:23.702Z"
+        }
+      }
+    ],
+    [
+      "reg-usr-p-8",
+      {
+        "id": "reg-usr-p-8",
+        "userId": "usr-p-8",
+        "eventId": "ev-abhiyantrix-2026",
+        "qrToken": "cmVnLXVzci1wLTg6dXNyLXAtODpldi1hYmhpeWFudHJpeC0yMDI2OmRkN2FmYzMwMzk2M2FkYjE",
+        "status": "checked_in",
+        "tShirtSize": "S",
+        "dietaryRequirements": "None",
+        "registeredAt": "2026-08-22T23:09:23.702Z",
+        "checkedInAt": "2026-08-28T19:09:23.702Z",
+        "checkInMethod": "virtual_self_checkin",
+        "user": {
+          "id": "usr-p-8",
+          "email": "sophia.chen@waterloo.ca",
+          "fullName": "Sophia Chen",
+          "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+          "role": "participant",
+          "collegeOrCompany": "University of Waterloo",
+          "skills": [
+            "Solidity",
+            "Zero Knowledge",
+            "Rust",
+            "Web3.js"
+          ],
+          "preferredRole": "DeFi Engineer",
+          "bio": "Passionate hacker and engineer working on cutting edge tech at University of Waterloo.",
+          "createdAt": "2026-08-21T11:09:23.702Z"
+        }
+      }
+    ],
+    [
+      "reg-usr-p-9",
+      {
+        "id": "reg-usr-p-9",
+        "userId": "usr-p-9",
+        "eventId": "ev-abhiyantrix-2026",
+        "qrToken": "cmVnLXVzci1wLTk6dXNyLXAtOTpldi1hYmhpeWFudHJpeC0yMDI2OjRhZjVjYjg1NjljZDNmZWI",
+        "status": "checked_in",
+        "tShirtSize": "M",
+        "dietaryRequirements": "None",
+        "registeredAt": "2026-08-23T11:09:23.702Z",
+        "checkedInAt": "2026-08-28T21:09:23.702Z",
+        "checkInMethod": "onsite_qr_scan",
+        "user": {
+          "id": "usr-p-9",
+          "email": "david.kim@kaist.ac.kr",
+          "fullName": "David Kim",
+          "avatarUrl": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=150&auto=format&fit=crop&q=80",
+          "role": "participant",
+          "collegeOrCompany": "KAIST",
+          "skills": [
+            "IoT",
+            "Embedded C",
+            "Climate Sensors",
+            "MQTT"
+          ],
+          "preferredRole": "IoT / Hardware Dev",
+          "bio": "Passionate hacker and engineer working on cutting edge tech at KAIST.",
+          "createdAt": "2026-08-22T11:09:23.702Z"
+        }
+      }
+    ],
+    [
+      "reg-usr-p-10",
+      {
+        "id": "reg-usr-p-10",
+        "userId": "usr-p-10",
+        "eventId": "ev-abhiyantrix-2026",
+        "qrToken": "cmVnLXVzci1wLTEwOnVzci1wLTEwOmV2LWFiaGl5YW50cml4LTIwMjY6ZTU1YmJiMDU2ZWM2YzQ5Yw",
+        "status": "checked_in",
+        "tShirtSize": "L",
+        "dietaryRequirements": "Vegetarian",
+        "registeredAt": "2026-08-23T23:09:23.702Z",
+        "user": {
+          "id": "usr-p-10",
+          "email": "priya.sundaram@gatech.edu",
+          "fullName": "Priya Sundaram",
+          "avatarUrl": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=150&auto=format&fit=crop&q=80",
+          "role": "participant",
+          "collegeOrCompany": "Georgia Tech",
+          "skills": [
+            "NLP",
+            "Transformers",
+            "FastAPI",
+            "RAG"
+          ],
+          "preferredRole": "AI/ML Engineer",
+          "bio": "Passionate hacker and engineer working on cutting edge tech at Georgia Tech.",
+          "createdAt": "2026-08-23T11:09:23.702Z"
+        },
+        "checkedInAt": "2026-08-29T11:12:39.387Z",
+        "checkInMethod": "onsite_qr_scan"
+      }
+    ],
+    [
+      "reg-usr-p-11",
+      {
+        "id": "reg-usr-p-11",
+        "userId": "usr-p-11",
+        "eventId": "ev-abhiyantrix-2026",
+        "qrToken": "cmVnLXVzci1wLTExOnVzci1wLTExOmV2LWFiaGl5YW50cml4LTIwMjY6ZmEyY2QyZTBiNjRkODA4ZQ",
+        "status": "registered",
+        "tShirtSize": "XL",
+        "dietaryRequirements": "None",
+        "registeredAt": "2026-08-24T11:09:23.702Z",
+        "user": {
+          "id": "usr-p-11",
+          "email": "vikram.j@outlook.com",
+          "fullName": "Vikram Joshi (Looking for Team)",
+          "avatarUrl": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80",
+          "role": "participant",
+          "collegeOrCompany": "UT Austin",
+          "skills": [
+            "React",
+            "TypeScript",
+            "TailwindCSS",
+            "Figma"
+          ],
+          "preferredRole": "Frontend Dev",
+          "bio": "Passionate hacker and engineer working on cutting edge tech at UT Austin.",
+          "createdAt": "2026-08-24T11:09:23.702Z"
+        }
+      }
+    ],
+    [
+      "reg-usr-p-12",
+      {
+        "id": "reg-usr-p-12",
+        "userId": "usr-p-12",
+        "eventId": "ev-abhiyantrix-2026",
+        "qrToken": "cmVnLXVzci1wLTEyOnVzci1wLTEyOmV2LWFiaGl5YW50cml4LTIwMjY6ODY0MjJhODJkY2M3N2JjYQ",
+        "status": "registered",
+        "tShirtSize": "S",
+        "dietaryRequirements": "None",
+        "registeredAt": "2026-08-24T23:09:23.702Z",
+        "user": {
+          "id": "usr-p-12",
+          "email": "zara.hadid@cam.ac.uk",
+          "fullName": "Zara Hadid (Looking for Team)",
+          "avatarUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80",
+          "role": "participant",
+          "collegeOrCompany": "Cambridge University",
+          "skills": [
+            "AI Agents",
+            "Reinforcement Learning",
+            "Python"
+          ],
+          "preferredRole": "AI Specialist",
+          "bio": "Passionate hacker and engineer working on cutting edge tech at Cambridge University.",
+          "createdAt": "2026-08-25T11:09:23.702Z"
+        }
+      }
+    ],
+    [
+      "reg-usr-p-13",
+      {
+        "id": "reg-usr-p-13",
+        "userId": "usr-p-13",
+        "eventId": "ev-abhiyantrix-2026",
+        "qrToken": "cmVnLXVzci1wLTEzOnVzci1wLTEzOmV2LWFiaGl5YW50cml4LTIwMjY6OGYyMTJkNDZiYTg2NWM0Mg",
+        "status": "registered",
+        "tShirtSize": "M",
+        "dietaryRequirements": "Vegetarian",
+        "registeredAt": "2026-08-25T11:09:23.702Z",
+        "user": {
+          "id": "usr-p-13",
+          "email": "ethan.h@mit.edu",
+          "fullName": "Ethan Hunt (Looking for Team)",
+          "avatarUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+          "role": "participant",
+          "collegeOrCompany": "MIT Media Lab",
+          "skills": [
+            "Smart Contracts",
+            "DeFi",
+            "Rust"
+          ],
+          "preferredRole": "Web3 Researcher",
+          "bio": "Passionate hacker and engineer working on cutting edge tech at MIT Media Lab.",
+          "createdAt": "2026-08-26T11:09:23.702Z"
+        }
+      }
+    ]
+  ],
+  "checkIns": [
+    [
+      "chk-reg-usr-p-1",
+      {
+        "id": "chk-reg-usr-p-1",
+        "registrationId": "reg-usr-p-1",
+        "eventId": "ev-abhiyantrix-2026",
+        "userId": "usr-p-1",
+        "scannedByUserId": "usr-org-1",
+        "method": "onsite_qr_scan",
+        "checkedInAt": "2026-08-28T05:09:23.702Z",
+        "user": {
+          "id": "usr-p-1",
+          "email": "rohan.sharma@tech.edu",
+          "fullName": "Rohan Sharma",
+          "avatarUrl": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80",
+          "role": "participant",
+          "collegeOrCompany": "Stanford University",
+          "skills": [
+            "Python",
+            "FastAPI",
+            "PyTorch",
+            "LangChain"
+          ],
+          "preferredRole": "AI/ML Engineer",
+          "bio": "Passionate hacker and engineer working on cutting edge tech at Stanford University.",
+          "createdAt": "2026-08-14T11:09:23.701Z"
+        }
+      }
+    ],
+    [
+      "chk-reg-usr-p-2",
+      {
+        "id": "chk-reg-usr-p-2",
+        "registrationId": "reg-usr-p-2",
+        "eventId": "ev-abhiyantrix-2026",
+        "userId": "usr-p-2",
+        "scannedByUserId": "usr-org-1",
+        "method": "virtual_self_checkin",
+        "checkedInAt": "2026-08-28T07:09:23.702Z",
+        "user": {
+          "id": "usr-p-2",
+          "email": "maya.lin@design.io",
+          "fullName": "Maya Lin",
+          "avatarUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80",
+          "role": "participant",
+          "collegeOrCompany": "RISD / Berkeley",
+          "skills": [
+            "UI/UX",
+            "Figma",
+            "React",
+            "TailwindCSS"
+          ],
+          "preferredRole": "Product Designer",
+          "bio": "Passionate hacker and engineer working on cutting edge tech at RISD / Berkeley.",
+          "createdAt": "2026-08-15T11:09:23.702Z"
+        }
+      }
+    ],
+    [
+      "chk-reg-usr-p-3",
+      {
+        "id": "chk-reg-usr-p-3",
+        "registrationId": "reg-usr-p-3",
+        "eventId": "ev-abhiyantrix-2026",
+        "userId": "usr-p-3",
+        "scannedByUserId": "usr-org-1",
+        "method": "onsite_qr_scan",
+        "checkedInAt": "2026-08-28T09:09:23.702Z",
+        "user": {
+          "id": "usr-p-3",
+          "email": "kabir.p@dev.org",
+          "fullName": "Kabir Patel",
+          "avatarUrl": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=150&auto=format&fit=crop&q=80",
+          "role": "participant",
+          "collegeOrCompany": "Carnegie Mellon",
+          "skills": [
+            "Rust",
+            "Solidity",
+            "Ethereum",
+            "TypeScript"
+          ],
+          "preferredRole": "Smart Contract Dev",
+          "bio": "Passionate hacker and engineer working on cutting edge tech at Carnegie Mellon.",
+          "createdAt": "2026-08-16T11:09:23.702Z"
+        }
+      }
+    ],
+    [
+      "chk-reg-usr-p-4",
+      {
+        "id": "chk-reg-usr-p-4",
+        "registrationId": "reg-usr-p-4",
+        "eventId": "ev-abhiyantrix-2026",
+        "userId": "usr-p-4",
+        "scannedByUserId": "usr-org-1",
+        "method": "virtual_self_checkin",
+        "checkedInAt": "2026-08-28T11:09:23.702Z",
+        "user": {
+          "id": "usr-p-4",
+          "email": "chloe.d@sorbonne.fr",
+          "fullName": "Chloe Dubois",
+          "avatarUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80",
+          "role": "participant",
+          "collegeOrCompany": "École Polytechnique",
+          "skills": [
+            "Computer Vision",
+            "PyTorch",
+            "C++",
+            "OpenCV"
+          ],
+          "preferredRole": "ML Researcher",
+          "bio": "Passionate hacker and engineer working on cutting edge tech at École Polytechnique.",
+          "createdAt": "2026-08-17T11:09:23.702Z"
+        }
+      }
+    ],
+    [
+      "chk-reg-usr-p-5",
+      {
+        "id": "chk-reg-usr-p-5",
+        "registrationId": "reg-usr-p-5",
+        "eventId": "ev-abhiyantrix-2026",
+        "userId": "usr-p-5",
+        "scannedByUserId": "usr-org-1",
+        "method": "onsite_qr_scan",
+        "checkedInAt": "2026-08-28T13:09:23.702Z",
+        "user": {
+          "id": "usr-p-5",
+          "email": "arjun.nair@iitb.ac.in",
+          "fullName": "Arjun Nair",
+          "avatarUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format&fit=crop&q=80",
+          "role": "participant",
+          "collegeOrCompany": "IIT Bombay",
+          "skills": [
+            "Node.js",
+            "Go",
+            "PostgreSQL",
+            "Docker"
+          ],
+          "preferredRole": "Backend Architect",
+          "bio": "Passionate hacker and engineer working on cutting edge tech at IIT Bombay.",
+          "createdAt": "2026-08-18T11:09:23.702Z"
+        }
+      }
+    ],
+    [
+      "chk-reg-usr-p-6",
+      {
+        "id": "chk-reg-usr-p-6",
+        "registrationId": "reg-usr-p-6",
+        "eventId": "ev-abhiyantrix-2026",
+        "userId": "usr-p-6",
+        "scannedByUserId": "usr-org-1",
+        "method": "virtual_self_checkin",
+        "checkedInAt": "2026-08-28T15:09:23.702Z",
+        "user": {
+          "id": "usr-p-6",
+          "email": "aisha.m@kaust.edu.sa",
+          "fullName": "Aisha Al-Mansoor",
+          "avatarUrl": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150&auto=format&fit=crop&q=80",
+          "role": "participant",
+          "collegeOrCompany": "KAUST",
+          "skills": [
+            "BioInformatics",
+            "Genomics",
+            "Python",
+            "Next.js"
+          ],
+          "preferredRole": "HealthTech Specialist",
+          "bio": "Passionate hacker and engineer working on cutting edge tech at KAUST.",
+          "createdAt": "2026-08-19T11:09:23.702Z"
+        }
+      }
+    ],
+    [
+      "chk-reg-usr-p-7",
+      {
+        "id": "chk-reg-usr-p-7",
+        "registrationId": "reg-usr-p-7",
+        "eventId": "ev-abhiyantrix-2026",
+        "userId": "usr-p-7",
+        "scannedByUserId": "usr-org-1",
+        "method": "onsite_qr_scan",
+        "checkedInAt": "2026-08-28T17:09:23.702Z",
+        "user": {
+          "id": "usr-p-7",
+          "email": "liam.oc@trinity.ie",
+          "fullName": "Liam O’Connor",
+          "avatarUrl": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&auto=format&fit=crop&q=80",
+          "role": "participant",
+          "collegeOrCompany": "Trinity College Dublin",
+          "skills": [
+            "React Native",
+            "WebSockets",
+            "TailwindCSS",
+            "GraphQL"
+          ],
+          "preferredRole": "Frontend Engineer",
+          "bio": "Passionate hacker and engineer working on cutting edge tech at Trinity College Dublin.",
+          "createdAt": "2026-08-20T11:09:23.702Z"
+        }
+      }
+    ],
+    [
+      "chk-reg-usr-p-8",
+      {
+        "id": "chk-reg-usr-p-8",
+        "registrationId": "reg-usr-p-8",
+        "eventId": "ev-abhiyantrix-2026",
+        "userId": "usr-p-8",
+        "scannedByUserId": "usr-org-1",
+        "method": "virtual_self_checkin",
+        "checkedInAt": "2026-08-28T19:09:23.702Z",
+        "user": {
+          "id": "usr-p-8",
+          "email": "sophia.chen@waterloo.ca",
+          "fullName": "Sophia Chen",
+          "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+          "role": "participant",
+          "collegeOrCompany": "University of Waterloo",
+          "skills": [
+            "Solidity",
+            "Zero Knowledge",
+            "Rust",
+            "Web3.js"
+          ],
+          "preferredRole": "DeFi Engineer",
+          "bio": "Passionate hacker and engineer working on cutting edge tech at University of Waterloo.",
+          "createdAt": "2026-08-21T11:09:23.702Z"
+        }
+      }
+    ],
+    [
+      "chk-reg-usr-p-9",
+      {
+        "id": "chk-reg-usr-p-9",
+        "registrationId": "reg-usr-p-9",
+        "eventId": "ev-abhiyantrix-2026",
+        "userId": "usr-p-9",
+        "scannedByUserId": "usr-org-1",
+        "method": "onsite_qr_scan",
+        "checkedInAt": "2026-08-28T21:09:23.702Z",
+        "user": {
+          "id": "usr-p-9",
+          "email": "david.kim@kaist.ac.kr",
+          "fullName": "David Kim",
+          "avatarUrl": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=150&auto=format&fit=crop&q=80",
+          "role": "participant",
+          "collegeOrCompany": "KAIST",
+          "skills": [
+            "IoT",
+            "Embedded C",
+            "Climate Sensors",
+            "MQTT"
+          ],
+          "preferredRole": "IoT / Hardware Dev",
+          "bio": "Passionate hacker and engineer working on cutting edge tech at KAIST.",
+          "createdAt": "2026-08-22T11:09:23.702Z"
+        }
+      }
+    ],
+    [
+      "chk-1788001959387",
+      {
+        "id": "chk-1788001959387",
+        "registrationId": "reg-usr-p-10",
+        "eventId": "ev-abhiyantrix-2026",
+        "userId": "usr-p-10",
+        "scannedByUserId": "usr-org-1",
+        "method": "onsite_qr_scan",
+        "checkedInAt": "2026-08-29T11:12:39.387Z",
+        "user": {
+          "id": "usr-p-10",
+          "email": "priya.sundaram@gatech.edu",
+          "fullName": "Priya Sundaram",
+          "avatarUrl": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=150&auto=format&fit=crop&q=80",
+          "role": "participant",
+          "collegeOrCompany": "Georgia Tech",
+          "skills": [
+            "NLP",
+            "Transformers",
+            "FastAPI",
+            "RAG"
+          ],
+          "preferredRole": "AI/ML Engineer",
+          "bio": "Passionate hacker and engineer working on cutting edge tech at Georgia Tech.",
+          "createdAt": "2026-08-23T11:09:23.702Z"
+        }
+      }
+    ]
+  ],
+  "teams": [
+    [
+      "team-neuroflow",
+      {
+        "id": "team-neuroflow",
+        "eventId": "ev-abhiyantrix-2026",
+        "name": "NeuroFlow AI",
+        "pitch": "Autonomous self-healing distributed agents for real-time edge telemetry and neuro-symbolic reasoning.",
+        "track": "AI & Autonomous Agents",
+        "leaderId": "usr-p-1",
+        "members": [
+          {
+            "userId": "usr-p-1",
+            "roleInTeam": "AI Lead",
+            "joinedAt": "2026-08-28T15:09:23.702Z",
+            "user": {
+              "id": "usr-p-1",
+              "email": "rohan.sharma@tech.edu",
+              "fullName": "Rohan Sharma",
+              "avatarUrl": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80",
+              "role": "participant",
+              "collegeOrCompany": "Stanford University",
+              "skills": [
+                "Python",
+                "FastAPI",
+                "PyTorch",
+                "LangChain"
+              ],
+              "preferredRole": "AI/ML Engineer",
+              "bio": "Passionate hacker and engineer working on cutting edge tech at Stanford University.",
+              "createdAt": "2026-08-14T11:09:23.701Z"
+            }
+          },
+          {
+            "userId": "usr-p-2",
+            "roleInTeam": "Design Lead",
+            "joinedAt": "2026-08-28T15:09:23.702Z",
+            "user": {
+              "id": "usr-p-2",
+              "email": "maya.lin@design.io",
+              "fullName": "Maya Lin",
+              "avatarUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80",
+              "role": "participant",
+              "collegeOrCompany": "RISD / Berkeley",
+              "skills": [
+                "UI/UX",
+                "Figma",
+                "React",
+                "TailwindCSS"
+              ],
+              "preferredRole": "Product Designer",
+              "bio": "Passionate hacker and engineer working on cutting edge tech at RISD / Berkeley.",
+              "createdAt": "2026-08-15T11:09:23.702Z"
+            }
+          }
+        ],
+        "openRoles": [
+          "Distributed Systems Dev"
+        ],
+        "neededSkills": [
+          "Rust",
+          "gRPC"
+        ],
+        "isLocked": true,
+        "createdAt": "2026-08-28T11:09:23.702Z"
+      }
+    ],
+    [
+      "team-zeropay",
+      {
+        "id": "team-zeropay",
+        "eventId": "ev-abhiyantrix-2026",
+        "name": "ZeroPay Protocol",
+        "pitch": "Zero-Knowledge rollups for instantaneous micro-transactions and compliant privacy-preserving DeFi remittances.",
+        "track": "Web3 & Decentralized Finance",
+        "leaderId": "usr-p-3",
+        "members": [
+          {
+            "userId": "usr-p-3",
+            "roleInTeam": "Smart Contract Dev",
+            "joinedAt": "2026-08-28T15:09:23.702Z",
+            "user": {
+              "id": "usr-p-3",
+              "email": "kabir.p@dev.org",
+              "fullName": "Kabir Patel",
+              "avatarUrl": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=150&auto=format&fit=crop&q=80",
+              "role": "participant",
+              "collegeOrCompany": "Carnegie Mellon",
+              "skills": [
+                "Rust",
+                "Solidity",
+                "Ethereum",
+                "TypeScript"
+              ],
+              "preferredRole": "Smart Contract Dev",
+              "bio": "Passionate hacker and engineer working on cutting edge tech at Carnegie Mellon.",
+              "createdAt": "2026-08-16T11:09:23.702Z"
+            }
+          },
+          {
+            "userId": "usr-p-8",
+            "roleInTeam": "ZK Cryptographer",
+            "joinedAt": "2026-08-28T15:09:23.702Z",
+            "user": {
+              "id": "usr-p-8",
+              "email": "sophia.chen@waterloo.ca",
+              "fullName": "Sophia Chen",
+              "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+              "role": "participant",
+              "collegeOrCompany": "University of Waterloo",
+              "skills": [
+                "Solidity",
+                "Zero Knowledge",
+                "Rust",
+                "Web3.js"
+              ],
+              "preferredRole": "DeFi Engineer",
+              "bio": "Passionate hacker and engineer working on cutting edge tech at University of Waterloo.",
+              "createdAt": "2026-08-21T11:09:23.702Z"
+            }
+          }
+        ],
+        "openRoles": [
+          "Frontend Web3 Dev"
+        ],
+        "neededSkills": [
+          "Wagmi",
+          "TailwindCSS"
+        ],
+        "isLocked": true,
+        "createdAt": "2026-08-28T11:09:23.702Z"
+      }
+    ],
+    [
+      "team-pulseguard",
+      {
+        "id": "team-pulseguard",
+        "eventId": "ev-abhiyantrix-2026",
+        "name": "PulseGuard Health",
+        "pitch": "Early biomarker detection and on-device ECG anomaly classification using lightweight vision transformers.",
+        "track": "HealthTech & BioInformatics",
+        "leaderId": "usr-p-6",
+        "members": [
+          {
+            "userId": "usr-p-6",
+            "roleInTeam": "BioInformatics Lead",
+            "joinedAt": "2026-08-28T15:09:23.702Z",
+            "user": {
+              "id": "usr-p-6",
+              "email": "aisha.m@kaust.edu.sa",
+              "fullName": "Aisha Al-Mansoor",
+              "avatarUrl": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150&auto=format&fit=crop&q=80",
+              "role": "participant",
+              "collegeOrCompany": "KAUST",
+              "skills": [
+                "BioInformatics",
+                "Genomics",
+                "Python",
+                "Next.js"
+              ],
+              "preferredRole": "HealthTech Specialist",
+              "bio": "Passionate hacker and engineer working on cutting edge tech at KAUST.",
+              "createdAt": "2026-08-19T11:09:23.702Z"
+            }
+          },
+          {
+            "userId": "usr-p-4",
+            "roleInTeam": "ML Specialist",
+            "joinedAt": "2026-08-28T15:09:23.702Z",
+            "user": {
+              "id": "usr-p-4",
+              "email": "chloe.d@sorbonne.fr",
+              "fullName": "Chloe Dubois",
+              "avatarUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80",
+              "role": "participant",
+              "collegeOrCompany": "École Polytechnique",
+              "skills": [
+                "Computer Vision",
+                "PyTorch",
+                "C++",
+                "OpenCV"
+              ],
+              "preferredRole": "ML Researcher",
+              "bio": "Passionate hacker and engineer working on cutting edge tech at École Polytechnique.",
+              "createdAt": "2026-08-17T11:09:23.702Z"
+            }
+          }
+        ],
+        "openRoles": [
+          "Mobile Dev (Flutter/React Native)"
+        ],
+        "neededSkills": [
+          "React Native",
+          "Bluetooth Low Energy"
+        ],
+        "isLocked": true,
+        "createdAt": "2026-08-28T11:09:23.702Z"
+      }
+    ],
+    [
+      "team-ecovolt",
+      {
+        "id": "team-ecovolt",
+        "eventId": "ev-abhiyantrix-2026",
+        "name": "EcoVolt Grid",
+        "pitch": "Decentralized peer-to-peer renewable microgrid dispatch powered by smart city IoT telemetry.",
+        "track": "ClimateTech & Smart Cities",
+        "leaderId": "usr-p-9",
+        "members": [
+          {
+            "userId": "usr-p-9",
+            "roleInTeam": "Hardware/IoT Dev",
+            "joinedAt": "2026-08-28T15:09:23.702Z",
+            "user": {
+              "id": "usr-p-9",
+              "email": "david.kim@kaist.ac.kr",
+              "fullName": "David Kim",
+              "avatarUrl": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=150&auto=format&fit=crop&q=80",
+              "role": "participant",
+              "collegeOrCompany": "KAIST",
+              "skills": [
+                "IoT",
+                "Embedded C",
+                "Climate Sensors",
+                "MQTT"
+              ],
+              "preferredRole": "IoT / Hardware Dev",
+              "bio": "Passionate hacker and engineer working on cutting edge tech at KAIST.",
+              "createdAt": "2026-08-22T11:09:23.702Z"
+            }
+          },
+          {
+            "userId": "usr-p-5",
+            "roleInTeam": "Backend Architect",
+            "joinedAt": "2026-08-28T15:09:23.702Z",
+            "user": {
+              "id": "usr-p-5",
+              "email": "arjun.nair@iitb.ac.in",
+              "fullName": "Arjun Nair",
+              "avatarUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format&fit=crop&q=80",
+              "role": "participant",
+              "collegeOrCompany": "IIT Bombay",
+              "skills": [
+                "Node.js",
+                "Go",
+                "PostgreSQL",
+                "Docker"
+              ],
+              "preferredRole": "Backend Architect",
+              "bio": "Passionate hacker and engineer working on cutting edge tech at IIT Bombay.",
+              "createdAt": "2026-08-18T11:09:23.702Z"
+            }
+          }
+        ],
+        "openRoles": [
+          "Energy Trading Specialist"
+        ],
+        "neededSkills": [
+          "Smart Contracts",
+          "Time Series DB"
+        ],
+        "isLocked": true,
+        "createdAt": "2026-08-28T11:09:23.702Z"
+      }
+    ],
+    [
+      "team-synthetix",
+      {
+        "id": "team-synthetix",
+        "eventId": "ev-abhiyantrix-2026",
+        "name": "Synthetix Bio",
+        "pitch": "Generative protein design pipeline leveraging diffusion models for targeted molecular docking.",
+        "track": "HealthTech & BioInformatics",
+        "leaderId": "usr-p-10",
+        "members": [
+          {
+            "userId": "usr-p-10",
+            "roleInTeam": "AI/ML Engineer",
+            "joinedAt": "2026-08-28T15:09:23.702Z",
+            "user": {
+              "id": "usr-p-10",
+              "email": "priya.sundaram@gatech.edu",
+              "fullName": "Priya Sundaram",
+              "avatarUrl": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=150&auto=format&fit=crop&q=80",
+              "role": "participant",
+              "collegeOrCompany": "Georgia Tech",
+              "skills": [
+                "NLP",
+                "Transformers",
+                "FastAPI",
+                "RAG"
+              ],
+              "preferredRole": "AI/ML Engineer",
+              "bio": "Passionate hacker and engineer working on cutting edge tech at Georgia Tech.",
+              "createdAt": "2026-08-23T11:09:23.702Z"
+            }
+          },
+          {
+            "userId": "usr-p-7",
+            "roleInTeam": "Frontend Lead",
+            "joinedAt": "2026-08-28T15:09:23.702Z",
+            "user": {
+              "id": "usr-p-7",
+              "email": "liam.oc@trinity.ie",
+              "fullName": "Liam O’Connor",
+              "avatarUrl": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&auto=format&fit=crop&q=80",
+              "role": "participant",
+              "collegeOrCompany": "Trinity College Dublin",
+              "skills": [
+                "React Native",
+                "WebSockets",
+                "TailwindCSS",
+                "GraphQL"
+              ],
+              "preferredRole": "Frontend Engineer",
+              "bio": "Passionate hacker and engineer working on cutting edge tech at Trinity College Dublin.",
+              "createdAt": "2026-08-20T11:09:23.702Z"
+            }
+          }
+        ],
+        "openRoles": [
+          "Computational Chemist"
+        ],
+        "neededSkills": [
+          "PyMOL",
+          "BioPython"
+        ],
+        "isLocked": false,
+        "createdAt": "2026-08-28T11:09:23.702Z"
+      }
+    ],
+    [
+      "team-sentinel",
+      {
+        "id": "team-sentinel",
+        "eventId": "ev-abhiyantrix-2026",
+        "name": "Sentinel DAO",
+        "pitch": "Autonomous smart contract exploit prediction and automated firewall pausing mechanism.",
+        "track": "Web3 & Decentralized Finance",
+        "leaderId": "usr-p-5",
+        "members": [
+          {
+            "userId": "usr-p-5",
+            "roleInTeam": "Security Architect",
+            "joinedAt": "2026-08-28T15:09:23.703Z",
+            "user": {
+              "id": "usr-p-5",
+              "email": "arjun.nair@iitb.ac.in",
+              "fullName": "Arjun Nair",
+              "avatarUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format&fit=crop&q=80",
+              "role": "participant",
+              "collegeOrCompany": "IIT Bombay",
+              "skills": [
+                "Node.js",
+                "Go",
+                "PostgreSQL",
+                "Docker"
+              ],
+              "preferredRole": "Backend Architect",
+              "bio": "Passionate hacker and engineer working on cutting edge tech at IIT Bombay.",
+              "createdAt": "2026-08-18T11:09:23.702Z"
+            }
+          }
+        ],
+        "openRoles": [
+          "Solidity Auditor",
+          "DevRel"
+        ],
+        "neededSkills": [
+          "EVM Bytecode",
+          "Foundry"
+        ],
+        "isLocked": false,
+        "createdAt": "2026-08-28T11:09:23.703Z"
+      }
+    ]
+  ],
+  "submissions": [
+    [
+      "sub-neuroflow",
+      {
+        "id": "sub-neuroflow",
+        "teamId": "team-neuroflow",
+        "eventId": "ev-abhiyantrix-2026",
+        "title": "NeuroFlow: Zero-Latency Autonomous Multi-Agent Fabric",
+        "description": "A breakthrough agentic orchestrator that dynamically allocates sub-tasks to localized SLMs, saving 80% inference compute while preserving privacy.",
+        "track": "AI & Autonomous Agents",
+        "repoUrl": "https://github.com/abhiyantrix-demo/neuroflow-agents",
+        "demoUrl": "https://neuroflow.ai.demo.live",
+        "pitchDeckUrl": "https://pitch.com/neuroflow-grand-pitch",
+        "submittedAt": "2026-08-28T23:09:23.702Z",
+        "team": {
+          "id": "team-neuroflow",
+          "eventId": "ev-abhiyantrix-2026",
+          "name": "NeuroFlow AI",
+          "pitch": "Autonomous self-healing distributed agents for real-time edge telemetry and neuro-symbolic reasoning.",
+          "track": "AI & Autonomous Agents",
+          "leaderId": "usr-p-1",
+          "members": [
+            {
+              "userId": "usr-p-1",
+              "roleInTeam": "AI Lead",
+              "joinedAt": "2026-08-28T15:09:23.702Z",
+              "user": {
+                "id": "usr-p-1",
+                "email": "rohan.sharma@tech.edu",
+                "fullName": "Rohan Sharma",
+                "avatarUrl": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80",
+                "role": "participant",
+                "collegeOrCompany": "Stanford University",
+                "skills": [
+                  "Python",
+                  "FastAPI",
+                  "PyTorch",
+                  "LangChain"
+                ],
+                "preferredRole": "AI/ML Engineer",
+                "bio": "Passionate hacker and engineer working on cutting edge tech at Stanford University.",
+                "createdAt": "2026-08-14T11:09:23.701Z"
+              }
+            },
+            {
+              "userId": "usr-p-2",
+              "roleInTeam": "Design Lead",
+              "joinedAt": "2026-08-28T15:09:23.702Z",
+              "user": {
+                "id": "usr-p-2",
+                "email": "maya.lin@design.io",
+                "fullName": "Maya Lin",
+                "avatarUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80",
+                "role": "participant",
+                "collegeOrCompany": "RISD / Berkeley",
+                "skills": [
+                  "UI/UX",
+                  "Figma",
+                  "React",
+                  "TailwindCSS"
+                ],
+                "preferredRole": "Product Designer",
+                "bio": "Passionate hacker and engineer working on cutting edge tech at RISD / Berkeley.",
+                "createdAt": "2026-08-15T11:09:23.702Z"
+              }
+            }
+          ],
+          "openRoles": [
+            "Distributed Systems Dev"
+          ],
+          "neededSkills": [
+            "Rust",
+            "gRPC"
+          ],
+          "isLocked": true,
+          "createdAt": "2026-08-28T11:09:23.702Z"
+        }
+      }
+    ],
+    [
+      "sub-zeropay",
+      {
+        "id": "sub-zeropay",
+        "teamId": "team-zeropay",
+        "eventId": "ev-abhiyantrix-2026",
+        "title": "ZeroPay: Sub-cent ZK Remittances for Cross-Border Gig Workers",
+        "description": "Enables global freelance payments settled in under 400ms with verifiable zero-knowledge identity proofs.",
+        "track": "Web3 & Decentralized Finance",
+        "repoUrl": "https://github.com/abhiyantrix-demo/zeropay-zk",
+        "demoUrl": "https://zeropay.finance.demo",
+        "pitchDeckUrl": "https://pitch.com/zeropay-pitch-deck",
+        "submittedAt": "2026-08-28T23:09:23.702Z",
+        "team": {
+          "id": "team-zeropay",
+          "eventId": "ev-abhiyantrix-2026",
+          "name": "ZeroPay Protocol",
+          "pitch": "Zero-Knowledge rollups for instantaneous micro-transactions and compliant privacy-preserving DeFi remittances.",
+          "track": "Web3 & Decentralized Finance",
+          "leaderId": "usr-p-3",
+          "members": [
+            {
+              "userId": "usr-p-3",
+              "roleInTeam": "Smart Contract Dev",
+              "joinedAt": "2026-08-28T15:09:23.702Z",
+              "user": {
+                "id": "usr-p-3",
+                "email": "kabir.p@dev.org",
+                "fullName": "Kabir Patel",
+                "avatarUrl": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=150&auto=format&fit=crop&q=80",
+                "role": "participant",
+                "collegeOrCompany": "Carnegie Mellon",
+                "skills": [
+                  "Rust",
+                  "Solidity",
+                  "Ethereum",
+                  "TypeScript"
+                ],
+                "preferredRole": "Smart Contract Dev",
+                "bio": "Passionate hacker and engineer working on cutting edge tech at Carnegie Mellon.",
+                "createdAt": "2026-08-16T11:09:23.702Z"
+              }
+            },
+            {
+              "userId": "usr-p-8",
+              "roleInTeam": "ZK Cryptographer",
+              "joinedAt": "2026-08-28T15:09:23.702Z",
+              "user": {
+                "id": "usr-p-8",
+                "email": "sophia.chen@waterloo.ca",
+                "fullName": "Sophia Chen",
+                "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+                "role": "participant",
+                "collegeOrCompany": "University of Waterloo",
+                "skills": [
+                  "Solidity",
+                  "Zero Knowledge",
+                  "Rust",
+                  "Web3.js"
+                ],
+                "preferredRole": "DeFi Engineer",
+                "bio": "Passionate hacker and engineer working on cutting edge tech at University of Waterloo.",
+                "createdAt": "2026-08-21T11:09:23.702Z"
+              }
+            }
+          ],
+          "openRoles": [
+            "Frontend Web3 Dev"
+          ],
+          "neededSkills": [
+            "Wagmi",
+            "TailwindCSS"
+          ],
+          "isLocked": true,
+          "createdAt": "2026-08-28T11:09:23.702Z"
+        }
+      }
+    ],
+    [
+      "sub-pulseguard",
+      {
+        "id": "sub-pulseguard",
+        "teamId": "team-pulseguard",
+        "eventId": "ev-abhiyantrix-2026",
+        "title": "PulseGuard: Wearable ML Alert System for Silent Cardiac Events",
+        "description": "Instant local inference engine that detects arrhythmias with 98.4% clinical sensitivity on ultra low-power smartwatches.",
+        "track": "HealthTech & BioInformatics",
+        "repoUrl": "https://github.com/abhiyantrix-demo/pulseguard-health",
+        "demoUrl": "https://pulseguard.health.demo",
+        "pitchDeckUrl": "https://pitch.com/pulseguard-clinical-deck",
+        "submittedAt": "2026-08-28T23:09:23.702Z",
+        "team": {
+          "id": "team-pulseguard",
+          "eventId": "ev-abhiyantrix-2026",
+          "name": "PulseGuard Health",
+          "pitch": "Early biomarker detection and on-device ECG anomaly classification using lightweight vision transformers.",
+          "track": "HealthTech & BioInformatics",
+          "leaderId": "usr-p-6",
+          "members": [
+            {
+              "userId": "usr-p-6",
+              "roleInTeam": "BioInformatics Lead",
+              "joinedAt": "2026-08-28T15:09:23.702Z",
+              "user": {
+                "id": "usr-p-6",
+                "email": "aisha.m@kaust.edu.sa",
+                "fullName": "Aisha Al-Mansoor",
+                "avatarUrl": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150&auto=format&fit=crop&q=80",
+                "role": "participant",
+                "collegeOrCompany": "KAUST",
+                "skills": [
+                  "BioInformatics",
+                  "Genomics",
+                  "Python",
+                  "Next.js"
+                ],
+                "preferredRole": "HealthTech Specialist",
+                "bio": "Passionate hacker and engineer working on cutting edge tech at KAUST.",
+                "createdAt": "2026-08-19T11:09:23.702Z"
+              }
+            },
+            {
+              "userId": "usr-p-4",
+              "roleInTeam": "ML Specialist",
+              "joinedAt": "2026-08-28T15:09:23.702Z",
+              "user": {
+                "id": "usr-p-4",
+                "email": "chloe.d@sorbonne.fr",
+                "fullName": "Chloe Dubois",
+                "avatarUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80",
+                "role": "participant",
+                "collegeOrCompany": "École Polytechnique",
+                "skills": [
+                  "Computer Vision",
+                  "PyTorch",
+                  "C++",
+                  "OpenCV"
+                ],
+                "preferredRole": "ML Researcher",
+                "bio": "Passionate hacker and engineer working on cutting edge tech at École Polytechnique.",
+                "createdAt": "2026-08-17T11:09:23.702Z"
+              }
+            }
+          ],
+          "openRoles": [
+            "Mobile Dev (Flutter/React Native)"
+          ],
+          "neededSkills": [
+            "React Native",
+            "Bluetooth Low Energy"
+          ],
+          "isLocked": true,
+          "createdAt": "2026-08-28T11:09:23.702Z"
+        }
+      }
+    ],
+    [
+      "sub-ecovolt",
+      {
+        "id": "sub-ecovolt",
+        "teamId": "team-ecovolt",
+        "eventId": "ev-abhiyantrix-2026",
+        "title": "EcoVolt: Algorithmic Solar Microgrid Balancing for Smart Communities",
+        "description": "Dynamic load balancing protocol saving municipal microgrids over 24 metric tons of CO2 weekly through automated battery arbitrage.",
+        "track": "ClimateTech & Smart Cities",
+        "repoUrl": "https://github.com/abhiyantrix-demo/ecovolt-microgrid",
+        "demoUrl": "https://ecovolt.energy.demo",
+        "pitchDeckUrl": "https://pitch.com/ecovolt-deck",
+        "submittedAt": "2026-08-28T23:09:23.702Z",
+        "team": {
+          "id": "team-ecovolt",
+          "eventId": "ev-abhiyantrix-2026",
+          "name": "EcoVolt Grid",
+          "pitch": "Decentralized peer-to-peer renewable microgrid dispatch powered by smart city IoT telemetry.",
+          "track": "ClimateTech & Smart Cities",
+          "leaderId": "usr-p-9",
+          "members": [
+            {
+              "userId": "usr-p-9",
+              "roleInTeam": "Hardware/IoT Dev",
+              "joinedAt": "2026-08-28T15:09:23.702Z",
+              "user": {
+                "id": "usr-p-9",
+                "email": "david.kim@kaist.ac.kr",
+                "fullName": "David Kim",
+                "avatarUrl": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=150&auto=format&fit=crop&q=80",
+                "role": "participant",
+                "collegeOrCompany": "KAIST",
+                "skills": [
+                  "IoT",
+                  "Embedded C",
+                  "Climate Sensors",
+                  "MQTT"
+                ],
+                "preferredRole": "IoT / Hardware Dev",
+                "bio": "Passionate hacker and engineer working on cutting edge tech at KAIST.",
+                "createdAt": "2026-08-22T11:09:23.702Z"
+              }
+            },
+            {
+              "userId": "usr-p-5",
+              "roleInTeam": "Backend Architect",
+              "joinedAt": "2026-08-28T15:09:23.702Z",
+              "user": {
+                "id": "usr-p-5",
+                "email": "arjun.nair@iitb.ac.in",
+                "fullName": "Arjun Nair",
+                "avatarUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format&fit=crop&q=80",
+                "role": "participant",
+                "collegeOrCompany": "IIT Bombay",
+                "skills": [
+                  "Node.js",
+                  "Go",
+                  "PostgreSQL",
+                  "Docker"
+                ],
+                "preferredRole": "Backend Architect",
+                "bio": "Passionate hacker and engineer working on cutting edge tech at IIT Bombay.",
+                "createdAt": "2026-08-18T11:09:23.702Z"
+              }
+            }
+          ],
+          "openRoles": [
+            "Energy Trading Specialist"
+          ],
+          "neededSkills": [
+            "Smart Contracts",
+            "Time Series DB"
+          ],
+          "isLocked": true,
+          "createdAt": "2026-08-28T11:09:23.702Z"
+        }
+      }
+    ],
+    [
+      "sub-synthetix",
+      {
+        "id": "sub-synthetix",
+        "teamId": "team-synthetix",
+        "eventId": "ev-abhiyantrix-2026",
+        "title": "Synthetix: Rapid De Novo Antibody Candidate Synthesis",
+        "description": "Generates de novo antibody loop structures against novel viral epitopes in seconds instead of months of laboratory wet-lab assays.",
+        "track": "HealthTech & BioInformatics",
+        "repoUrl": "https://github.com/abhiyantrix-demo/synthetix-bio",
+        "demoUrl": "https://synthetix.bio.demo",
+        "pitchDeckUrl": "https://pitch.com/synthetix-pitch",
+        "submittedAt": "2026-08-28T23:09:23.702Z",
+        "team": {
+          "id": "team-synthetix",
+          "eventId": "ev-abhiyantrix-2026",
+          "name": "Synthetix Bio",
+          "pitch": "Generative protein design pipeline leveraging diffusion models for targeted molecular docking.",
+          "track": "HealthTech & BioInformatics",
+          "leaderId": "usr-p-10",
+          "members": [
+            {
+              "userId": "usr-p-10",
+              "roleInTeam": "AI/ML Engineer",
+              "joinedAt": "2026-08-28T15:09:23.702Z",
+              "user": {
+                "id": "usr-p-10",
+                "email": "priya.sundaram@gatech.edu",
+                "fullName": "Priya Sundaram",
+                "avatarUrl": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=150&auto=format&fit=crop&q=80",
+                "role": "participant",
+                "collegeOrCompany": "Georgia Tech",
+                "skills": [
+                  "NLP",
+                  "Transformers",
+                  "FastAPI",
+                  "RAG"
+                ],
+                "preferredRole": "AI/ML Engineer",
+                "bio": "Passionate hacker and engineer working on cutting edge tech at Georgia Tech.",
+                "createdAt": "2026-08-23T11:09:23.702Z"
+              }
+            },
+            {
+              "userId": "usr-p-7",
+              "roleInTeam": "Frontend Lead",
+              "joinedAt": "2026-08-28T15:09:23.702Z",
+              "user": {
+                "id": "usr-p-7",
+                "email": "liam.oc@trinity.ie",
+                "fullName": "Liam O’Connor",
+                "avatarUrl": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&auto=format&fit=crop&q=80",
+                "role": "participant",
+                "collegeOrCompany": "Trinity College Dublin",
+                "skills": [
+                  "React Native",
+                  "WebSockets",
+                  "TailwindCSS",
+                  "GraphQL"
+                ],
+                "preferredRole": "Frontend Engineer",
+                "bio": "Passionate hacker and engineer working on cutting edge tech at Trinity College Dublin.",
+                "createdAt": "2026-08-20T11:09:23.702Z"
+              }
+            }
+          ],
+          "openRoles": [
+            "Computational Chemist"
+          ],
+          "neededSkills": [
+            "PyMOL",
+            "BioPython"
+          ],
+          "isLocked": false,
+          "createdAt": "2026-08-28T11:09:23.702Z"
+        }
+      }
+    ]
+  ],
+  "rubrics": [
+    [
+      "rub-flagship-2026",
+      {
+        "id": "rub-flagship-2026",
+        "eventId": "ev-abhiyantrix-2026",
+        "name": "Abhiyantrix Grand Evaluation Rubric",
+        "description": "Official 100-point weighted scoring standard across Technical Rigor, Innovation, Market Impact, UI/UX, and Pitch Quality.",
+        "criteria": [
+          {
+            "id": "crit-tech",
+            "title": "Technical Depth & Architecture",
+            "description": "Code complexity, elegance of architecture, robust error handling, scalability, and stack mastery.",
+            "maxScore": 10,
+            "weight": 0.25,
+            "orderIndex": 1
+          },
+          {
+            "id": "crit-innov",
+            "title": "Innovation & Originality",
+            "description": "Uniqueness of approach, breakthrough creative problem solving, and distinct competitive advantage.",
+            "maxScore": 10,
+            "weight": 0.25,
+            "orderIndex": 2
+          },
+          {
+            "id": "crit-impact",
+            "title": "Real-World Impact & Viability",
+            "description": "Practical utility, target demographic value, commercial or open-source potential, and feasibility.",
+            "maxScore": 10,
+            "weight": 0.2,
+            "orderIndex": 3
+          },
+          {
+            "id": "crit-ux",
+            "title": "UI/UX & User Experience",
+            "description": "Design polish, accessibility, responsiveness, micro-interactions, and frictionless onboarding.",
+            "maxScore": 10,
+            "weight": 0.15,
+            "orderIndex": 4
+          },
+          {
+            "id": "crit-demo",
+            "title": "Presentation & Live Demo",
+            "description": "Clarity of pitch, live demonstration execution, structured roadmap, and cohesive team delivery.",
+            "maxScore": 10,
+            "weight": 0.15,
+            "orderIndex": 5
+          }
+        ]
+      }
+    ]
+  ],
+  "scores": [
+    [
+      "sc-1",
+      {
+        "id": "sc-1",
+        "submissionId": "sub-neuroflow",
+        "eventId": "ev-abhiyantrix-2026",
+        "judgeId": "usr-judge-1",
+        "judgeName": "Dr. Sarah Chen",
+        "criteriaScores": [
+          {
+            "criterionId": "crit-tech",
+            "score": 9.8
+          },
+          {
+            "criterionId": "crit-innov",
+            "score": 9.9
+          },
+          {
+            "criterionId": "crit-impact",
+            "score": 9.7
+          },
+          {
+            "criterionId": "crit-ux",
+            "score": 9.4
+          },
+          {
+            "criterionId": "crit-demo",
+            "score": 9.6
+          }
+        ],
+        "totalWeightedScore": 97.2,
+        "feedbackStrengths": "Flawless agentic orchestration under edge partition constraints!",
+        "feedbackImprovements": "Expand multi-modal benchmarks.",
+        "isLocked": true,
+        "submittedAt": "2026-08-29T03:09:23.703Z",
+        "updatedAt": "2026-08-29T11:12:39.460Z"
+      }
+    ],
+    [
+      "sc-2",
+      {
+        "id": "sc-2",
+        "submissionId": "sub-neuroflow",
+        "eventId": "ev-abhiyantrix-2026",
+        "judgeId": "usr-judge-4",
+        "judgeName": "Dave Kumar",
+        "criteriaScores": [
+          {
+            "criterionId": "crit-tech",
+            "score": 9.5
+          },
+          {
+            "criterionId": "crit-innov",
+            "score": 9.6
+          },
+          {
+            "criterionId": "crit-impact",
+            "score": 9.4
+          },
+          {
+            "criterionId": "crit-ux",
+            "score": 9.2
+          },
+          {
+            "criterionId": "crit-demo",
+            "score": 9.5
+          }
+        ],
+        "totalWeightedScore": 94.6,
+        "feedbackStrengths": "Very solid containerized orchestration and crisp telemetry dashboard.",
+        "feedbackImprovements": "Quantify energy savings under heavy concurrency.",
+        "isLocked": true,
+        "submittedAt": "2026-08-29T04:09:23.703Z",
+        "updatedAt": "2026-08-29T04:09:23.703Z"
+      }
+    ],
+    [
+      "sc-3",
+      {
+        "id": "sc-3",
+        "submissionId": "sub-zeropay",
+        "eventId": "ev-abhiyantrix-2026",
+        "judgeId": "usr-judge-2",
+        "judgeName": "Marcus Vance",
+        "criteriaScores": [
+          {
+            "criterionId": "crit-tech",
+            "score": 9.4
+          },
+          {
+            "criterionId": "crit-innov",
+            "score": 9.2
+          },
+          {
+            "criterionId": "crit-impact",
+            "score": 9.6
+          },
+          {
+            "criterionId": "crit-ux",
+            "score": 8.8
+          },
+          {
+            "criterionId": "crit-demo",
+            "score": 9
+          }
+        ],
+        "totalWeightedScore": 92.4,
+        "feedbackStrengths": "Flawless ZK circuits implemented in Circom with verified on-chain verification contracts.",
+        "feedbackImprovements": "Enhance the mobile wallet browser UX for faster proof generation on low-end devices.",
+        "isLocked": true,
+        "submittedAt": "2026-08-29T05:09:23.703Z",
+        "updatedAt": "2026-08-29T05:09:23.703Z"
+      }
+    ],
+    [
+      "sc-4",
+      {
+        "id": "sc-4",
+        "submissionId": "sub-pulseguard",
+        "eventId": "ev-abhiyantrix-2026",
+        "judgeId": "usr-judge-3",
+        "judgeName": "Dr. Elena Rostova",
+        "criteriaScores": [
+          {
+            "criterionId": "crit-tech",
+            "score": 9.2
+          },
+          {
+            "criterionId": "crit-innov",
+            "score": 9.5
+          },
+          {
+            "criterionId": "crit-impact",
+            "score": 9.8
+          },
+          {
+            "criterionId": "crit-ux",
+            "score": 9.1
+          },
+          {
+            "criterionId": "crit-demo",
+            "score": 9.4
+          }
+        ],
+        "totalWeightedScore": 94.1,
+        "feedbackStrengths": "Life-saving clinical application with rigorous false-positive reduction benchmarks.",
+        "feedbackImprovements": "Clarify FDA software as medical device (SaMD) regulatory compliance pathway.",
+        "isLocked": true,
+        "submittedAt": "2026-08-29T06:09:23.703Z",
+        "updatedAt": "2026-08-29T06:09:23.703Z"
+      }
+    ],
+    [
+      "sc-5",
+      {
+        "id": "sc-5",
+        "submissionId": "sub-ecovolt",
+        "eventId": "ev-abhiyantrix-2026",
+        "judgeId": "usr-judge-4",
+        "judgeName": "Dave Kumar",
+        "criteriaScores": [
+          {
+            "criterionId": "crit-tech",
+            "score": 9
+          },
+          {
+            "criterionId": "crit-innov",
+            "score": 8.9
+          },
+          {
+            "criterionId": "crit-impact",
+            "score": 9.3
+          },
+          {
+            "criterionId": "crit-ux",
+            "score": 8.5
+          },
+          {
+            "criterionId": "crit-demo",
+            "score": 8.8
+          }
+        ],
+        "totalWeightedScore": 89.3,
+        "feedbackStrengths": "Ingenious IoT sensor telemetry integration with microgrid simulation testbed.",
+        "feedbackImprovements": "Integrate weather forecast API for predictive solar storage dispatch.",
+        "isLocked": true,
+        "submittedAt": "2026-08-29T07:09:23.703Z",
+        "updatedAt": "2026-08-29T07:09:23.703Z"
+      }
+    ],
+    [
+      "sc-6",
+      {
+        "id": "sc-6",
+        "submissionId": "sub-synthetix",
+        "eventId": "ev-abhiyantrix-2026",
+        "judgeId": "usr-judge-1",
+        "judgeName": "Dr. Sarah Chen",
+        "criteriaScores": [
+          {
+            "criterionId": "crit-tech",
+            "score": 8.9
+          },
+          {
+            "criterionId": "crit-innov",
+            "score": 9.3
+          },
+          {
+            "criterionId": "crit-impact",
+            "score": 9
+          },
+          {
+            "criterionId": "crit-ux",
+            "score": 8.7
+          },
+          {
+            "criterionId": "crit-demo",
+            "score": 8.9
+          }
+        ],
+        "totalWeightedScore": 89.9,
+        "feedbackStrengths": "Very impressive 3D molecular protein diffusion visualization!",
+        "feedbackImprovements": "Benchmark runtime against standard AlphaFold3 and RFdiffusion baselines.",
+        "isLocked": true,
+        "submittedAt": "2026-08-29T08:09:23.703Z",
+        "updatedAt": "2026-08-29T08:09:23.703Z"
+      }
+    ]
+  ],
+  "announcements": [
+    [
+      "ann-1",
+      {
+        "id": "ann-1",
+        "eventId": "ev-abhiyantrix-2026",
+        "authorId": "usr-org-1",
+        "authorName": "Alex Vance (Operations)",
+        "title": "🚨 CRITICAL: Final Project Submission & Demo Lock at 6:00 PM Sharp!",
+        "message": "All teams must push final code commits, update their GitHub READMEs, and test their live demo URLs before the 6:00 PM hard cutoff. Judging round 2 begins immediately after.",
+        "severity": "urgent",
+        "targetAudience": "all",
+        "isPinned": true,
+        "createdAt": "2026-08-29T10:24:23.703Z"
+      }
+    ],
+    [
+      "ann-2",
+      {
+        "id": "ann-2",
+        "eventId": "ev-abhiyantrix-2026",
+        "authorId": "usr-org-1",
+        "authorName": "Alex Vance (Operations)",
+        "title": "⚡ Sponsor Workshop: Building Low-Latency Agents on Cloud GPUs",
+        "message": "Join us in Stage B or the virtual stream for a 30-minute deep-dive on optimising vLLM inference and speculative decoding with free API credits for all participants.",
+        "severity": "info",
+        "targetAudience": "all",
+        "isPinned": false,
+        "createdAt": "2026-08-29T08:09:23.703Z"
+      }
+    ],
+    [
+      "ann-3",
+      {
+        "id": "ann-3",
+        "eventId": "ev-abhiyantrix-2026",
+        "authorId": "usr-org-1",
+        "authorName": "Alex Vance (Operations)",
+        "title": "⚠️ Food & Refreshment Restock: Midnight Snack Station Open",
+        "message": "Midnight energy drinks, gourmet pizza, and vegan wraps are now available at Hall 3 catering lounge.",
+        "severity": "info",
+        "targetAudience": "all",
+        "isPinned": false,
+        "createdAt": "2026-08-28T21:09:23.703Z"
+      }
+    ],
+    [
+      "ann-959432",
+      {
+        "id": "ann-959432",
+        "eventId": "ev-abhiyantrix-2026",
+        "authorId": "usr-org-1",
+        "authorName": "Event Operations",
+        "title": "🚨 Test Broadcast: Final Round Kickoff",
+        "message": "All participants please gather at Main Stage for judging briefing.",
+        "severity": "urgent",
+        "targetAudience": "all",
+        "isPinned": true,
+        "createdAt": "2026-08-29T11:12:39.432Z"
+      }
+    ]
+  ]
+}

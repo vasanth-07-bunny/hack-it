@@ -117,6 +117,7 @@ teamsRouter.post('/teams', validateBody(CreateTeamSchema), (req: Request, res: R
   };
 
   store.teams.set(newTeam.id, newTeam);
+  store.persist();
   broadcastTeamUpdate(eventId, newTeam);
 
   return res.status(201).json(newTeam);

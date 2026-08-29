@@ -188,6 +188,7 @@ judgingRouter.post('/judging/scores', strictOperationLimiter, validateBody(Submi
     };
     store.scores.set(scoreEntry.id, scoreEntry);
   }
+  store.persist();
 
   // 1. Broadcast score submitted event
   broadcastScoreSubmitted(eventId, {
