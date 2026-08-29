@@ -13,57 +13,62 @@ import {
 import { useAuth } from '../../contexts/AuthContext';
 import { useEvent } from '../../contexts/EventContext';
 import { useSocket } from '../../contexts/SocketContext';
-import { Submission, Team } from '@abhiyantrix/shared-types';
+import { Team, Submission } from '@abhiyantrix/shared-types';
+import { apiFetch } from '../../services/api';
+import confetti from 'canvas-confetti';
 
 export const ProjectSubmissionForm: React.FC = () => {
   const { currentUser } = useAuth();
   const { event } = useEvent();
   const { playChime } = useSocket();
 
-  const [myTeam, setMyTeam] = useState<Team | null>(null);
-  const [submission, setSubmission] = useState<Submission | null>(null);
+  const [myTeams, setMyTeams] = useState<Team[]>([]);
+  const [selectedTeamId, setSelectedTeamId] = useState<string>('');
+  const [existingSubmission, setExistingSubmission] = useState<Submission | null>(null);
+
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [track, setTrack] = useState('');
   const [repoUrl, setRepoUrl] = useState('');
   const [demoUrl, setDemoUrl] = useState('');
   const [pitchDeckUrl, setPitchDeckUrl] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [success, setSuccess] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const eventId = 'ev-abhiyantrix-2026';
 
   const fetchData = async () => {
     if (!currentUser) return;
     try {
-      const [teamsRes, subsRes] = await Promise.all([
-        fetch(`/api/events/${eventId}/matchmaking/teams`),
-        fetch(`/api/events/${eventId}/submissions`)
+      const [teamsData, subsData] = await Promise.all([
+        apiFetch(`/api/events/${eventId}/matchmaking/teams`),
+        apiFetch(`/api/events/${eventId}/submissions`)
       ]);
 
-      if (teamsRes.ok) {
-        const teamsData: Team[] = await teamsRes.json();
-        const team = teamsData.find(t => t.members.some(m => m.userId === currentUser.id));
-        setMyTeam(team || null);
+      if (Array.isArray(teamsData)) {
+        const userTeams = teamsData.filter((t: Team) =>
+          t.members.some(m => m.userId === currentUser.id)
+        );
+        setMyTeams(userTeams);
 
-        if (team && subsRes.ok) {
-          const subsData: Submission[] = await subsRes.json();
-          const sub = subsData.find(s => s.teamId === team.id);
-          if (sub) {
-            setSubmission(sub);
-            setTitle(sub.title);
-            setDescription(sub.description);
-            setTrack(sub.track);
-            setRepoUrl(sub.repoUrl);
-            setDemoUrl(sub.demoUrl || '');
-            setPitchDeckUrl(sub.pitchDeckUrl || '');
-          } else {
-            setTrack(team.track);
+        if (userTeams.length > 0) {
+          const currentTeam = userTeams[0];
+          setSelectedTeamId(currentTeam.id);
+
+          if (Array.isArray(subsData)) {
+            const sub = subsData.find((s: Submission) => s.teamId === currentTeam.id);
+            if (sub) {
+              setExistingSubmission(sub);
+              setTitle(sub.title);
+              setDescription(sub.description);
+              setRepoUrl(sub.repoUrl);
+              setDemoUrl(sub.demoUrl || '');
+              setPitchDeckUrl(sub.pitchDeckUrl || '');
+            }
           }
         }
       }
     } catch (err) {
-      console.error('Error fetching submission details', err);
+      console.error('Error fetching submissions', err);
     }
   };
 
@@ -73,39 +78,42 @@ export const ProjectSubmissionForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!myTeam || !title || !repoUrl) return;
+    if (!selectedTeamId || !title || !description || !repoUrl) return;
 
     setIsSubmitting(true);
     try {
-      const res = await fetch(`/api/events/${eventId}/submissions`, {
+      const data = await apiFetch(`/api/events/${eventId}/submissions`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          teamId: myTeam.id,
+          teamId: selectedTeamId,
           title,
           description,
-          track: track || myTeam.track,
           repoUrl,
           demoUrl,
           pitchDeckUrl
         })
       });
 
-      if (res.ok) {
-        const data = await res.json();
-        setSubmission(data);
-        setSuccess(true);
-        playChime('checkin');
-        setTimeout(() => setSuccess(false), 4000);
+      if (data && data.id) {
+        setIsSuccess(true);
+        playChime('score');
+        confetti({
+          particleCount: 80,
+          spread: 80,
+          origin: { y: 0.6 }
+        });
+        setTimeout(() => setIsSuccess(false), 5000);
+        fetchData();
       }
     } catch (err) {
-      console.error('Failed to submit project', err);
+      console.error('Submission failed', err);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  if (!myTeam) {
+  if (myTeams.length === 0) {
     return (
       <div className="glass-panel p-8 rounded-3xl text-center space-y-3">
         <FolderGit2 className="w-12 h-12 text-slate-500 mx-auto" />
@@ -118,6 +126,8 @@ export const ProjectSubmissionForm: React.FC = () => {
     );
   }
 
+  const selectedTeam = myTeams.find(t => t.id === selectedTeamId) || myTeams[0];
+
   return (
     <div className="glass-panel p-6 rounded-3xl space-y-6">
       
@@ -127,12 +137,14 @@ export const ProjectSubmissionForm: React.FC = () => {
             <FolderGit2 className="w-5 h-5 text-brand-cyan" />
             <h3 className="text-lg font-extrabold text-white">Project Artifacts & Submission</h3>
           </div>
-          <p className="text-xs text-slate-400 mt-0.5">
-            Team: <strong className="text-brand-cyan">{myTeam.name}</strong> • Track: <strong className="text-slate-200">{myTeam.track}</strong>
-          </p>
+          {selectedTeam && (
+            <p className="text-xs text-slate-400 mt-0.5">
+              Team: <strong className="text-brand-cyan">{selectedTeam.name}</strong> • Track: <strong className="text-slate-200">{selectedTeam.track}</strong>
+            </p>
+          )}
         </div>
 
-        {submission && (
+        {existingSubmission && (
           <span className="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5">
             <CheckCircle className="w-3.5 h-3.5 text-emerald-400" />
             Submitted for Judging
@@ -223,11 +235,11 @@ export const ProjectSubmissionForm: React.FC = () => {
             className="py-2.5 px-6 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-blue text-slate-950 font-extrabold text-xs shadow-lg hover:brightness-110 active:scale-[0.98] transition-all flex items-center gap-2"
           >
             <Send className="w-3.5 h-3.5" />
-            {isSubmitting ? 'Saving...' : submission ? 'Update Submission' : 'Submit Project'}
+            {isSubmitting ? 'Saving...' : existingSubmission ? 'Update Submission' : 'Submit Project'}
           </button>
         </div>
 
-        {success && (
+        {isSuccess && (
           <div className="p-3.5 rounded-xl bg-emerald-950/60 border border-emerald-500/50 text-emerald-300 text-xs flex items-center gap-2">
             <CheckCircle className="w-4 h-4 text-emerald-400" />
             <span>Project submission updated! Judges can now evaluate your project against the rubric.</span>

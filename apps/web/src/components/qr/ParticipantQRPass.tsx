@@ -16,6 +16,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { useEvent } from '../../contexts/EventContext';
 import { useSocket } from '../../contexts/SocketContext';
 import { Registration } from '@abhiyantrix/shared-types';
+import { apiFetch } from '../../services/api';
 
 export const ParticipantQRPass: React.FC = () => {
   const { currentUser } = useAuth();
@@ -31,9 +32,8 @@ export const ParticipantQRPass: React.FC = () => {
   const fetchRegistration = async () => {
     if (!currentUser) return;
     try {
-      const res = await fetch(`/api/events/${eventId}/my-registration?userId=${currentUser.id}`);
-      if (res.ok) {
-        const data = await res.json();
+      const data = await apiFetch(`/api/events/${eventId}/my-registration?userId=${currentUser.id}`);
+      if (data && data.registration) {
         setRegistration(data.registration);
       }
     } catch (err) {
@@ -51,7 +51,7 @@ export const ParticipantQRPass: React.FC = () => {
     if (!registration) return;
     setIsSelfCheckingIn(true);
     try {
-      const res = await fetch(`/api/events/${eventId}/check-in/verify`, {
+      const data = await apiFetch(`/api/events/${eventId}/check-in/verify`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -60,8 +60,7 @@ export const ParticipantQRPass: React.FC = () => {
           scannedByUserId: currentUser?.id
         })
       });
-      if (res.ok) {
-        const data = await res.json();
+      if (data && data.registration) {
         setRegistration(data.registration);
         playChime('checkin');
       }

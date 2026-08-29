@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { User, UserRole } from '@abhiyantrix/shared-types';
-import { getApiUrl } from '../services/api';
+import { apiFetch } from '../services/api';
 
 interface AuthContextType {
   currentUser: User | null;
@@ -22,12 +22,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const fetchUsers = async () => {
     try {
-      const res = await fetch(getApiUrl('/api/auth/users'));
-      if (res.ok) {
-        const users: User[] = await res.json();
+      const users: User[] = await apiFetch('/api/auth/users');
+      if (Array.isArray(users)) {
         setAllUsers(users);
 
-        // Set default user if not set
         if (!currentUser) {
           const savedUserId = localStorage.getItem('abhiyantrix_user_id');
           const matched = users.find(u => u.id === savedUserId) || users.find(u => u.role === 'organizer') || users[0];

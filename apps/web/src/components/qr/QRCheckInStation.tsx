@@ -18,6 +18,7 @@ import {
 import { useAuth } from '../../contexts/AuthContext';
 import { useSocket } from '../../contexts/SocketContext';
 import { Registration, CheckInRecord } from '@abhiyantrix/shared-types';
+import { apiFetch } from '../../services/api';
 
 export const QRCheckInStation: React.FC = () => {
   const { currentUser } = useAuth();
@@ -47,16 +48,14 @@ export const QRCheckInStation: React.FC = () => {
 
   const fetchStats = async () => {
     try {
-      const [statsRes, regRes] = await Promise.all([
-        fetch(`/api/events/${eventId}/check-in/stats`),
-        fetch(`/api/events/${eventId}/registrations`)
+      const [statsData, regData] = await Promise.all([
+        apiFetch(`/api/events/${eventId}/check-in/stats`),
+        apiFetch(`/api/events/${eventId}/registrations`)
       ]);
-      if (statsRes.ok) {
-        const statsData = await statsRes.json();
+      if (statsData && statsData.totalRegistered !== undefined) {
         setStats(statsData);
       }
-      if (regRes.ok) {
-        const regData = await regRes.json();
+      if (Array.isArray(regData)) {
         setAllRegistrations(regData);
       }
     } catch (err) {
@@ -72,7 +71,7 @@ export const QRCheckInStation: React.FC = () => {
   const verifyToken = async (qrToken: string, method: string = 'onsite_qr_scan') => {
     setIsVerifying(true);
     try {
-      const res = await fetch(`/api/events/${eventId}/check-in/verify`, {
+      const data = await apiFetch(`/api/events/${eventId}/check-in/verify`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -82,16 +81,14 @@ export const QRCheckInStation: React.FC = () => {
         })
       });
 
-      const data = await res.json();
-
-      if (res.status === 200) {
+      if (data.success) {
         setScanResult({
           status: 'success',
           message: data.message,
           registration: data.registration,
           user: data.user
         });
-      } else if (res.status === 409) {
+      } else if (data.alreadyCheckedIn) {
         setScanResult({
           status: 'already_checked_in',
           message: data.error,

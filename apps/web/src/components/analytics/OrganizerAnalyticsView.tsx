@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { useSocket } from '../../contexts/SocketContext';
 import { EventAnalytics } from '@abhiyantrix/shared-types';
+import { apiFetch } from '../../services/api';
 
 export const OrganizerAnalyticsView: React.FC = () => {
   const { latestCheckIn } = useSocket();
@@ -24,13 +25,12 @@ export const OrganizerAnalyticsView: React.FC = () => {
 
   const fetchAnalytics = async () => {
     try {
-      const res = await fetch(`/api/events/${eventId}/analytics`);
-      if (res.ok) {
-        const data: EventAnalytics = await res.json();
+      const data = await apiFetch(`/api/events/${eventId}/analytics`);
+      if (data && data.totalRegistered !== undefined) {
         setAnalytics(data);
       }
     } catch (err) {
-      console.error('Error loading analytics', err);
+      console.error('Failed to load analytics', err);
     } finally {
       setIsLoading(false);
     }

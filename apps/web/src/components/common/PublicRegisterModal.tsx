@@ -9,6 +9,7 @@ import {
 import { useAuth } from '../../contexts/AuthContext';
 import { useEvent } from '../../contexts/EventContext';
 import { useSocket } from '../../contexts/SocketContext';
+import { apiFetch } from '../../services/api';
 
 interface PublicRegisterModalProps {
   isOpen: boolean;
@@ -45,7 +46,7 @@ export const PublicRegisterModal: React.FC<PublicRegisterModalProps> = ({
 
     setIsSubmitting(true);
     try {
-      const res = await fetch(`/api/events/${eventId}/register`, {
+      const data = await apiFetch(`/api/events/${eventId}/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -59,8 +60,7 @@ export const PublicRegisterModal: React.FC<PublicRegisterModalProps> = ({
         })
       });
 
-      if (res.ok) {
-        const data = await res.json();
+      if (data && data.registration) {
         setSuccessData(data);
         playChime('checkin');
         await refreshUsers();

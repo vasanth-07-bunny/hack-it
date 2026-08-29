@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Event } from '@abhiyantrix/shared-types';
-import { getApiUrl } from '../services/api';
+import { apiFetch } from '../services/api';
 
 interface EventContextType {
   event: Event | null;
@@ -16,9 +16,8 @@ export const EventProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const fetchEvent = async () => {
     try {
-      const res = await fetch(getApiUrl('/api/events/ev-abhiyantrix-2026'));
-      if (res.ok) {
-        const data: Event = await res.json();
+      const data: Event = await apiFetch('/api/events/ev-abhiyantrix-2026');
+      if (data && data.id) {
         setEvent(data);
       }
     } catch (err) {

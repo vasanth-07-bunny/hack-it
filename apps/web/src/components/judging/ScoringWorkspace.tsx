@@ -18,6 +18,7 @@ import {
 import { useAuth } from '../../contexts/AuthContext';
 import { useSocket } from '../../contexts/SocketContext';
 import { Rubric, Submission, ScoreSubmission } from '@abhiyantrix/shared-types';
+import { apiFetch } from '../../services/api';
 
 interface AssignmentItem {
   submission: Submission & { team?: any };
@@ -46,9 +47,8 @@ export const ScoringWorkspace: React.FC = () => {
   const fetchAssignments = async () => {
     if (!currentUser) return;
     try {
-      const res = await fetch(`/api/events/${eventId}/judging/assignments?judgeId=${currentUser.id}`);
-      if (res.ok) {
-        const data = await res.json();
+      const data = await apiFetch(`/api/events/${eventId}/judging/assignments?judgeId=${currentUser.id}`);
+      if (data && data.assignments) {
         setRubric(data.rubric);
         setAssignments(data.assignments);
 
@@ -123,7 +123,7 @@ export const ScoringWorkspace: React.FC = () => {
         score
       }));
 
-      const res = await fetch(`/api/events/${eventId}/judging/scores`, {
+      const data = await apiFetch(`/api/events/${eventId}/judging/scores`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -135,7 +135,7 @@ export const ScoringWorkspace: React.FC = () => {
         })
       });
 
-      if (res.ok) {
+      if (data) {
         setSubmitSuccess(true);
         playChime('score');
         confetti({

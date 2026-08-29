@@ -16,7 +16,7 @@ import {
 import { useSocket } from '../../contexts/SocketContext';
 import { useEvent } from '../../contexts/EventContext';
 import { LeaderboardData, TeamRanking } from '@abhiyantrix/shared-types';
-import { getApiUrl } from '../../services/api';
+import { apiFetch } from '../../services/api';
 
 interface LiveLeaderboardProps {
   compact?: boolean;
@@ -36,15 +36,14 @@ export const LiveLeaderboardView: React.FC<LiveLeaderboardProps> = ({ compact = 
   const fetchLeaderboard = async () => {
     try {
       const url = selectedTrack === 'All'
-        ? getApiUrl(`/api/events/${eventId}/leaderboard`)
-        : getApiUrl(`/api/events/${eventId}/leaderboard?track=${encodeURIComponent(selectedTrack)}`);
-      const res = await fetch(url);
-      if (res.ok) {
-        const data: LeaderboardData = await res.json();
+        ? `/api/events/${eventId}/leaderboard`
+        : `/api/events/${eventId}/leaderboard?track=${encodeURIComponent(selectedTrack)}`;
+      const data = await apiFetch(url);
+      if (data && data.rankings) {
         setLeaderboard(data);
       }
     } catch (err) {
-      console.error('Error fetching leaderboard', err);
+      console.error('Error loading leaderboard', err);
     }
   };
 

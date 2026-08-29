@@ -15,6 +15,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { useSocket } from '../../contexts/SocketContext';
 import { useEvent } from '../../contexts/EventContext';
 import { AnnouncementSeverity } from '@abhiyantrix/shared-types';
+import { apiFetch } from '../../services/api';
 
 export const AnnouncementStudio: React.FC = () => {
   const { currentUser } = useAuth();
@@ -41,7 +42,7 @@ export const AnnouncementStudio: React.FC = () => {
 
     setIsBroadcasting(true);
     try {
-      const res = await fetch(`/api/events/${eventId}/announcements`, {
+      const data = await apiFetch(`/api/events/${eventId}/announcements`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -56,7 +57,7 @@ export const AnnouncementStudio: React.FC = () => {
         })
       });
 
-      if (res.ok) {
+      if (data && data.id) {
         setTitle('');
         setMessage('');
         setSuccessFeedback(true);

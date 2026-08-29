@@ -17,6 +17,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { useEvent } from '../../contexts/EventContext';
 import { useSocket } from '../../contexts/SocketContext';
 import { Team, User } from '@abhiyantrix/shared-types';
+import { apiFetch } from '../../services/api';
 
 export const TeamMatchmaker: React.FC = () => {
   const { currentUser } = useAuth();
@@ -42,16 +43,14 @@ export const TeamMatchmaker: React.FC = () => {
 
   const fetchData = async () => {
     try {
-      const [teamsRes, partsRes] = await Promise.all([
-        fetch(`/api/events/${eventId}/matchmaking/teams?track=${selectedTrack}`),
-        fetch(`/api/events/${eventId}/matchmaking/participants`)
+      const [teamsData, partsData] = await Promise.all([
+        apiFetch(`/api/events/${eventId}/matchmaking/teams?track=${selectedTrack}`),
+        apiFetch(`/api/events/${eventId}/matchmaking/participants`)
       ]);
-      if (teamsRes.ok) {
-        const teamsData = await teamsRes.json();
+      if (Array.isArray(teamsData)) {
         setTeams(teamsData);
       }
-      if (partsRes.ok) {
-        const partsData = await partsRes.json();
+      if (Array.isArray(partsData)) {
         setParticipants(partsData);
       }
     } catch (err) {
@@ -94,7 +93,7 @@ export const TeamMatchmaker: React.FC = () => {
   const handleJoinTeam = async (teamId: string) => {
     if (!currentUser) return;
     try {
-      const res = await fetch(`/api/events/${eventId}/teams/${teamId}/join`, {
+      await apiFetch(`/api/events/${eventId}/teams/${teamId}/join`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -102,9 +101,7 @@ export const TeamMatchmaker: React.FC = () => {
           roleInTeam: currentUser.preferredRole
         })
       });
-      if (res.ok) {
-        fetchData();
-      }
+      fetchData();
     } catch (err) {
       console.error('Failed to join team', err);
     }
@@ -116,7 +113,7 @@ export const TeamMatchmaker: React.FC = () => {
 
     setIsCreating(true);
     try {
-      const res = await fetch(`/api/events/${eventId}/teams`, {
+      await apiFetch(`/api/events/${eventId}/teams`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -129,12 +126,10 @@ export const TeamMatchmaker: React.FC = () => {
         })
       });
 
-      if (res.ok) {
-        setShowCreateModal(false);
-        setNewTeamName('');
-        setNewTeamPitch('');
-        fetchData();
-      }
+      setShowCreateModal(false);
+      setNewTeamName('');
+      setNewTeamPitch('');
+      fetchData();
     } catch (err) {
       console.error('Failed to create team', err);
     } finally {

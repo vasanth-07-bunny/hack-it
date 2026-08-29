@@ -9,6 +9,7 @@ import {
   RefreshCw
 } from 'lucide-react';
 import { Rubric } from '@abhiyantrix/shared-types';
+import { apiFetch } from '../../services/api';
 
 export const RubricManager: React.FC = () => {
   const [rubric, setRubric] = useState<Rubric | null>(null);
@@ -21,16 +22,14 @@ export const RubricManager: React.FC = () => {
 
   const fetchData = async () => {
     try {
-      const [rubricRes, auditRes] = await Promise.all([
-        fetch(`/api/events/${eventId}/judging/rubrics`),
-        fetch(`/api/events/${eventId}/judging/audit-trail`)
+      const [rubricData, auditData] = await Promise.all([
+        apiFetch(`/api/events/${eventId}/judging/rubrics`),
+        apiFetch(`/api/events/${eventId}/judging/audit-trail`)
       ]);
-      if (rubricRes.ok) {
-        const rubricData = await rubricRes.json();
+      if (rubricData && rubricData.criteria) {
         setRubric(rubricData);
       }
-      if (auditRes.ok) {
-        const auditData = await auditRes.json();
+      if (Array.isArray(auditData)) {
         setAuditScores(auditData);
       }
     } catch (err) {
@@ -59,15 +58,13 @@ export const RubricManager: React.FC = () => {
     if (!rubric) return;
     setIsSaving(true);
     try {
-      const res = await fetch(`/api/events/${eventId}/judging/rubrics`, {
+      await apiFetch(`/api/events/${eventId}/judging/rubrics`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(rubric)
       });
-      if (res.ok) {
-        setSaveSuccess(true);
-        setTimeout(() => setSaveSuccess(false), 3000);
-      }
+      setSaveSuccess(true);
+      setTimeout(() => setSaveSuccess(false), 3000);
     } catch (err) {
       console.error('Failed to save rubric', err);
     } finally {

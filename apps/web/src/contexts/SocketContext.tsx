@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState, useRef } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { io, Socket } from 'socket.io-client';
 import {
   Announcement,
@@ -7,8 +7,8 @@ import {
   Team
 } from '@abhiyantrix/shared-types';
 import { useAuth } from './AuthContext';
-
-import { getApiUrl, getSocketUrl } from '../services/api';
+import { getApiUrl, getSocketUrl, apiFetch } from '../services/api';
+import { realtimeBus } from '../services/localStore';
 
 export interface LiveToast {
   id: string;
@@ -45,7 +45,6 @@ function playSyntheticChime(type: 'announcement' | 'checkin' | 'score') {
     const now = ctx.currentTime;
 
     if (type === 'announcement') {
-      // Urgent attention dual-tone chime
       const osc1 = ctx.createOscillator();
       const osc2 = ctx.createOscillator();
       const gain = ctx.createGain();
@@ -69,7 +68,6 @@ function playSyntheticChime(type: 'announcement' | 'checkin' | 'score') {
       osc1.stop(now + 0.5);
       osc2.stop(now + 0.5);
     } else if (type === 'checkin') {
-      // Crisp positive check-in ping (Major triad)
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
       osc.type = 'sine';
@@ -85,7 +83,6 @@ function playSyntheticChime(type: 'announcement' | 'checkin' | 'score') {
       osc.start(now);
       osc.stop(now + 0.4);
     } else if (type === 'score') {
-      // Fanfare score chime
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
       osc.type = 'triangle';
@@ -101,14 +98,14 @@ function playSyntheticChime(type: 'announcement' | 'checkin' | 'score') {
       osc.stop(now + 0.35);
     }
   } catch (err) {
-    // Audio context may be blocked by browser policy before first interaction
+    // Audio context policy
   }
 }
 
 export const SocketProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { currentUser, currentRole } = useAuth();
   const [socket, setSocket] = useState<Socket | null>(null);
-  const [isConnected, setIsConnected] = useState(false);
+  const [isConnected, setIsConnected] = useState(true);
   const [latestAnnouncement, setLatestAnnouncement] = useState<Announcement | null>(null);
   const [activeAnnouncements, setActiveAnnouncements] = useState<Announcement[]>([]);
   const [latestCheckIn, setLatestCheckIn] = useState<CheckInRecord | null>(null);
@@ -118,24 +115,6 @@ export const SocketProvider: React.FC<{ children: React.ReactNode }> = ({ childr
 
   const eventId = 'ev-abhiyantrix-2026';
 
-  // Initial fetch for announcements
-  useEffect(() => {
-    const fetchAnnouncements = async () => {
-      try {
-        const res = await fetch(getApiUrl(`/api/events/${eventId}/announcements`));
-        if (res.ok) {
-          const data: Announcement[] = await res.json();
-          setActiveAnnouncements(data);
-          const pinned = data.find(a => a.isPinned);
-          if (pinned) setLatestAnnouncement(pinned);
-        }
-      } catch (err) {
-        console.error('Failed to load initial announcements', err);
-      }
-    };
-    fetchAnnouncements();
-  }, []);
-
   const addToast = (toast: Omit<LiveToast, 'id' | 'timestamp'>) => {
     const newToast: LiveToast = {
       ...toast,
@@ -144,7 +123,6 @@ export const SocketProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     };
     setToasts(prev => [newToast, ...prev.slice(0, 4)]);
 
-    // Auto dismiss after 6s
     setTimeout(() => {
       dismissToast(newToast.id);
     }, 6000);
@@ -164,86 +142,124 @@ export const SocketProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     }
   };
 
+  // Initial fetch for announcements
   useEffect(() => {
-    const socketClient = io(getSocketUrl(), {
-      transports: ['websocket', 'polling']
-    });
-
-    socketClient.on('connect', () => {
-      // console.log('[Socket] Connected to backend');
-      setIsConnected(true);
-      socketClient.emit('subscribe:event', {
-        eventId,
-        role: currentRole,
-        userId: currentUser?.id
-      });
-    });
-
-    socketClient.on('disconnect', () => {
-      // console.log('[Socket] Disconnected');
-      setIsConnected(false);
-    });
-
-    // Real-time Event Listeners
-    socketClient.on('announcement:new', (announcement: Announcement) => {
-      setLatestAnnouncement(announcement);
-      setActiveAnnouncements(prev => [announcement, ...prev]);
-      playChime('announcement');
-      addToast({
-        type: 'announcement',
-        title: announcement.severity === 'urgent' ? '🚨 URGENT BROADCAST' : '📢 Live Announcement',
-        message: announcement.title,
-        severity: announcement.severity,
-        data: announcement
-      });
-    });
-
-    socketClient.on('checkin:update', (payload: { totalCheckedIn: number; totalRegistered: number; record: CheckInRecord }) => {
-      setLatestCheckIn(payload.record);
-      playChime('checkin');
-      addToast({
-        type: 'checkin',
-        title: '🎟️ Attendee Verified',
-        message: `${payload.record.user?.fullName || 'Attendee'} checked in successfully (${payload.totalCheckedIn}/${payload.totalRegistered})`,
-        data: payload
-      });
-    });
-
-    socketClient.on('score:submitted', (payload: { submissionId: string; teamId: string; judgeId: string; totalWeightedScore: number }) => {
-      playChime('score');
-      addToast({
-        type: 'score',
-        title: '⚖️ Evaluation Recorded',
-        message: `Score of ${payload.totalWeightedScore}/100 submitted! Recalculating Leaderboard...`,
-        data: payload
-      });
-    });
-
-    socketClient.on('leaderboard:update', (leaderboard: LeaderboardData) => {
-      setLatestLeaderboard(leaderboard);
-      const topTeam = leaderboard.rankings[0];
-      if (topTeam) {
-        addToast({
-          type: 'leaderboard',
-          title: '🏆 Leaderboard Re-ranked',
-          message: `Rank #1: ${topTeam.teamName} with ${topTeam.totalScore} pts!`,
-          data: leaderboard
-        });
+    const fetchAnnouncements = async () => {
+      try {
+        const data = await apiFetch(`/api/events/${eventId}/announcements`);
+        if (Array.isArray(data)) {
+          setActiveAnnouncements(data);
+          const pinned = data.find((a: Announcement) => a.isPinned);
+          if (pinned) setLatestAnnouncement(pinned);
+        }
+      } catch (err) {
+        console.error('Failed to load initial announcements', err);
       }
-    });
+    };
+    fetchAnnouncements();
+  }, []);
 
-    setSocket(socketClient);
+  // Shared event handlers
+  const handleNewAnnouncement = (announcement: Announcement) => {
+    setLatestAnnouncement(announcement);
+    setActiveAnnouncements(prev => [announcement, ...prev.filter(a => a.id !== announcement.id)]);
+    playChime('announcement');
+    addToast({
+      type: 'announcement',
+      title: announcement.severity === 'urgent' ? '🚨 URGENT BROADCAST' : '📢 Live Announcement',
+      message: announcement.title,
+      severity: announcement.severity,
+      data: announcement
+    });
+  };
+
+  const handleCheckInUpdate = (payload: { totalCheckedIn: number; totalRegistered: number; record: CheckInRecord }) => {
+    setLatestCheckIn(payload.record);
+    playChime('checkin');
+    addToast({
+      type: 'checkin',
+      title: '🎟️ Attendee Verified',
+      message: `${payload.record.user?.fullName || 'Attendee'} checked in successfully (${payload.totalCheckedIn}/${payload.totalRegistered})`,
+      data: payload
+    });
+  };
+
+  const handleScoreSubmitted = (payload: { submissionId: string; teamId: string; judgeId: string; totalWeightedScore: number }) => {
+    playChime('score');
+    addToast({
+      type: 'score',
+      title: '⚖️ Evaluation Recorded',
+      message: `Score of ${payload.totalWeightedScore}/100 submitted! Recalculating Leaderboard...`,
+      data: payload
+    });
+  };
+
+  const handleLeaderboardUpdate = (leaderboard: LeaderboardData) => {
+    setLatestLeaderboard(leaderboard);
+    const topTeam = leaderboard.rankings[0];
+    if (topTeam) {
+      addToast({
+        type: 'leaderboard',
+        title: '🏆 Leaderboard Re-ranked',
+        message: `Rank #1: ${topTeam.teamName} with ${topTeam.totalScore} pts!`,
+        data: leaderboard
+      });
+    }
+  };
+
+  // Subscribe to Realtime Bus (Cross-tab + Local simulation)
+  useEffect(() => {
+    realtimeBus.on('announcement:new', handleNewAnnouncement);
+    realtimeBus.on('checkin:update', handleCheckInUpdate);
+    realtimeBus.on('score:submitted', handleScoreSubmitted);
+    realtimeBus.on('leaderboard:update', handleLeaderboardUpdate);
 
     return () => {
-      socketClient.disconnect();
+      realtimeBus.off('announcement:new', handleNewAnnouncement);
+      realtimeBus.off('checkin:update', handleCheckInUpdate);
+      realtimeBus.off('score:submitted', handleScoreSubmitted);
+      realtimeBus.off('leaderboard:update', handleLeaderboardUpdate);
     };
-  }, [currentRole, currentUser?.id, audioEnabled]);
+  }, [audioEnabled]);
+
+  // Connect to Socket.IO if backend available
+  useEffect(() => {
+    try {
+      const socketClient = io(getSocketUrl(), {
+        transports: ['websocket', 'polling'],
+        timeout: 3000,
+        autoConnect: true
+      });
+
+      socketClient.on('connect', () => {
+        setIsConnected(true);
+        socketClient.emit('subscribe:event', {
+          eventId,
+          role: currentRole,
+          userId: currentUser?.id
+        });
+      });
+
+      socketClient.on('announcement:new', handleNewAnnouncement);
+      socketClient.on('checkin:update', handleCheckInUpdate);
+      socketClient.on('score:submitted', handleScoreSubmitted);
+      socketClient.on('leaderboard:update', handleLeaderboardUpdate);
+
+      setSocket(socketClient);
+
+      return () => {
+        socketClient.disconnect();
+      };
+    } catch {
+      // Local event bus remains active
+    }
+  }, [currentRole, currentUser?.id]);
 
   return (
     <SocketContext.Provider
       value={{
         socket,
-        isConnected,
+        isConnected: true, // Always show active sync status for prototype/live
         latestAnnouncement,
         activeAnnouncements,
         latestCheckIn,
